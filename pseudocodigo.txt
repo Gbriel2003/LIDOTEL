@@ -1,0 +1,2296 @@
+programa hotelLidotel;
+
+
+usos crt, SysUtils;
+
+
+
+tipo
+TClienteIndividual = registro
+
+	nombre: cadena;
+
+	apellido: cadena;
+
+	cedula: cadena;
+
+	email: cadena;
+
+	telefono: cadena;
+
+	edad: cadena;
+
+fin;
+
+TClienteAcompanado = registro
+
+	nombre: cadena;
+
+	apellido: cadena;
+
+	cedula: cadena;
+
+	email: cadena;
+
+	telefono: cadena;
+
+	edad: cadena;
+
+fin;
+
+TGrupoFamilia = registro
+
+	nombre: cadena;
+
+	apellido: cadena;
+
+	cedula: cadena;
+
+	email: cadena;
+
+	telefono: cadena;
+
+	edad: cadena;
+
+fin;
+
+variable
+	clienteIndividual: TClienteIndividual;
+
+	archivoClienteIndividual: archivo de texto;
+
+	clienteAcompanado: TClienteAcompanado;
+
+	archivoClienteAcompanado: archivo de texto;
+
+
+
+	clienteGrupoFamilia: TGrupoFamilia;
+
+	archivoGrupoFamilia: archivo de texto;
+
+
+
+	cantPersonas1, cantPersonas2, cantPersonas3: entero;
+
+	i, op, totalGrupo: entero;
+
+	adultos, ninos: entero;
+
+	pago, cambio: entero;
+
+	editarDatos: booleano;
+
+	descripcion: cadena;
+
+	habitacion: entero;
+
+	cantDias: entero;
+
+	resp: cadena;
+
+procedimiento procesoCobro();
+
+inicio
+	si pago > habitacion entonces
+
+	inicio
+
+		cambio := pago - habitacion;
+		escribir('||Por favor, espere su cambio...||');
+		escribir('||Su cambio es de: ');
+		escribir(cambio, '$');
+	fin;
+	sino si pago < habitacion entonces
+	inicio
+	repetir
+		inicio
+		escribir('||Su pago esta incompleto, tiene un faltante de: ');
+		escribir(habitacion-pago, '$');
+		escribir('||Su pago completo seria de: ');
+		escribir(habitacion, '$');
+		escribir('||Por favor, ingrese su dinero: ');
+		leerln(pago);
+	 	fin;
+    
+		hasta pago >= habitacion;
+
+	fin;
+fin;
+
+procedimiento MostrarFacturaIndividual();
+
+
+inicio
+
+escribir('|| FACTURA ||');
+
+escribir('||Nombre: ', clienteIndividual.nombre);
+
+escribir('||Apellido: ', clienteIndividual.apellido);
+
+escribir('||Cedula: ', clienteIndividual.cedula);
+
+escribir('||E-mail: ', clienteIndividual.email);
+
+escribir('||Telefono: ', clienteIndividual.telefono)
+
+escribir('||Dias de estadia: ', cantDias);
+
+escribir('||Habitacion: ', descripcion);
+
+escribir('||Total cuenta: ', habitacion, '$');
+
+
+fin;
+
+procedimiento MostrarFacturaAcompanado();
+
+
+inicio
+
+
+escribir('|| FACTURA ||');
+escribir('||Nombre: ', clienteAcompanado.nombre);
+
+escribir('||Apellido: ', clienteAcompanado.apellido);
+
+escribir('||Cedula: ', clienteAcompanado.cedula);
+
+escribir('||E-mail: ', clienteAcompanado.email);
+
+escribir('||Telefono: ', clienteAcompanado.telefono);
+
+escribir('||Dias de estadia: ', cantDias);
+
+escribir('||Habitacion: ', descripcion);
+
+escribir('||Total cuenta: ', habitacion, '$');
+
+
+
+fin; 
+
+procedimiento MostrarFacturaGrupo_Familia();
+
+
+inicio
+
+
+escribir('|| FACTURA ||');
+
+escribir('||Nombre: ', clienteGrupoFamilia.nombre);
+
+escribir('||Apellido: ', clienteGrupoFamilia.apellido);
+
+escribir('||Cédula: ', clienteGrupoFamilia.cedula);
+
+escribir('||Correo electrónico: ', clienteGrupoFamilia.email);
+
+escribir('||Teléfono: ', clienteGrupoFamilia.telefono);
+
+escribir('||Días de estadía: ', cantDias);
+
+escribir('||Habitación: ', descripcion);
+
+escribir('||Total de la cuenta: ', habitacion, '$');
+
+
+fin;
+
+procedimiento registroIndividual
+ 
+
+   cedulaExistente <- falso
+ 
+   
+
+    Si cantPersonas1 < 2000 entonces  
+  
+     cantPersonas1 <- cantPersonas1 + 1
+  
+       cedulaExistente <- falso
+
+
+       Asignar archivoClienteIndividual a 'clienteIndividual.dat'
+
+        
+        Si no existe el archivo 'clienteIndividual.dat' entonces
+
+           Crear archivoClienteIndividual
+
+        Fin Si
+        
+        
+
+	escribir 'Por favor, indique los siguientes datos para su proceso de registro'
+
+        
+        Repetir
+
+            escribir 'Nombre: '
+ 
+           Leer clienteIndividual.nombre
+  
+      Hasta que clienteIndividual.nombre no sea igual a ''
+ 
+       
+        Repetir
+ 
+           escribir 'Apellido: '
+            Leer clienteIndividual.apellido
+ 
+       Hasta que clienteIndividual.apellido no sea igual a ''
+ 
+       
+        Repetir
+            Mostrar 'Numero de cedula: '
+ 
+           Leer clienteIndividual.cedula
+  
+      Hasta que clienteIndividual.cedula no sea igual a ''
+ 
+ 
+      
+        Repetir
+     
+       escribir 'E-mail: '
+  
+          Leer clienteIndividual.email
+   
+     Hasta que clienteIndividual.email no sea igual a ''
+ 
+       
+        Repetir
+ 
+           escribir 'Numero de telefono: '
+  
+          Leer clienteIndividual.telefono
+ 
+       Hasta que clienteIndividual.telefono no sea igual a ''
+ 
+           
+               
+        Abrir archivoClienteIndividual para lectura
+ 
+       
+        Mientras no sea el final del archivo archivoClienteIndividual hacer
+ 
+           Leer linea del archivoClienteIndividual
+ 
+           Si Pos(clienteIndividual.cedula, linea) > 0 entonces
+ 
+               cedulaExistente <- verdadero
+ 
+               Romper el bucle
+ 
+           Fin Si
+ 
+       Fin Mientras
+  
+      
+        Si cedulaExistente es verdadero entonces
+
+            escribir 'El cliente ya se encuentra registrado. ||'
+        Fin Si
+        
+  
+      Cerrar archivoClienteIndividual
+
+    Fin Si
+Fin procedimiento
+
+procedimiento registroAcompanado
+
+    cedulaExistente <- falso
+
+    
+    Si cantPersonas2 <- 2000 entonces
+
+        cantPersonas2 <- cantPersonas2 + 1
+
+        cedulaExistente <- falso
+
+        
+        Asignar archivoClienteAcompanado a 'clienteAcompanado.dat'
+
+        
+        Si no existe el archivo 'clienteAcompanado.dat' entonces
+
+            Crear archivoClienteAcompanado
+
+        Fin Si
+
+        
+        escribir'Por favor, indique los siguientes datos para su proceso de registro'
+
+        
+        Repetir
+
+           escribir 'Nombre: '
+
+            Leer clienteAcompanado.nombre
+
+        Hasta que clienteAcompanado.nombre no sea igual a  ' '
+
+        
+        Repetir
+
+            escribirr 'Apellido: '
+
+            Leer clienteAcompanado.apellido
+
+        Hasta que clienteAcompanado.apellido no sea igual a ' '
+
+        
+        Repetir
+
+            escribir 'Numero de cedula: '
+
+            Leer clienteAcompanado.cedula
+
+        Hasta que clienteAcompanado.cedula no sea igual a ' '
+
+        
+        Repetir
+
+            escribir E-mail: '
+
+            Leer clienteAcompanado.email
+
+        Hasta que clienteAcompanado.email no sea igual a ' '
+
+        
+        Repetir
+
+            escribir 'Numero de telefono: '
+
+            Leer clienteAcompanado.telefono
+ 
+       Hasta que clienteAcompanado.telefono no sea igual ' '
+
+        
+        Repetir
+
+            escribir 'Edad: '
+
+            Leer clienteAcompanado.edad
+        Hasta que clienteAcompanado.edad no sea igual a ' '
+
+        
+        
+        
+        Abrir archivoClienteAcompanado para lectura
+
+        
+        Mientras no sea el final del archivo archivoClienteAcompanado hacer
+
+            Leer linea del archivoClienteAcompanado
+
+            Si Pos(clienteAcompanado.cedula, linea) > 0 entonces
+
+                cedulaExistente <- verdadero
+
+                Romper el bucle
+
+            Fin Si
+
+        Fin Mientras
+
+        
+        Si cedulaExistente es verdadero entonces
+
+            escribir 'El cliente ya se encuentra registrado.'
+
+        Fin Si
+
+        
+        Cerrar archivoClienteAcompanado
+
+        
+                
+        Mostrar 'Por favor, indique los datos para el registro de su acompanante'
+
+        
+        Repetir
+
+            escribir 'Nombre del acompanante: '
+
+            Leer clienteAcompanado.nombre
+
+        Hasta que clienteAcompanado.nombre no sea igual a ' '
+
+        
+        Repetir
+
+            escribir 'Apellido del acompanante: '
+
+            Leer clienteAcompanado.apellido
+ 
+       Hasta que clienteAcompanado.apellido no sea igual a ' '
+
+        
+        Repetir
+
+            escribir 'Numero de cedula del acompanante: '
+
+            Leer clienteAcompanado.cedula
+
+        Hasta que clienteAcompanado.cedula no sea igual a ' '
+
+        
+        Repetir
+
+            escribir 'E-mail del acompanante: '
+
+            Leer clienteAcompanado.email
+
+        Hasta que clienteAcompanado.email no sea igual a ' '
+
+        
+        Repetir
+
+            escribir 'Numero de telefono del acompanante: '
+
+            Leer clienteAcompanado.telefono
+
+        Hasta que clienteAcompanado.telefono no sea igual a ' '
+
+        
+        Repetir
+
+            escribir 'Edad del acompanante: '
+
+            Leer clienteAcompanado.edad
+ 
+       Hasta que clienteAcompanado.edad no sea igual a ' '
+
+        
+        
+        
+        Abrir archivoClienteAcompanado para lectura
+
+        
+        Mientras no sea el final del archivo archivoClienteAcompanado hacer
+
+            Leer linea del archivoClienteAcompanado
+
+            Si Pos(clienteAcompanado.cedula, linea) > 0 entonces
+
+                cedulaExistente <-  verdadero
+
+                Romper el bucle
+
+            Fin Si
+
+        Fin Mientras
+
+        
+        Si cedulaExistente es verdadero entonces
+
+            escribir 'El cliente ya se encuentra registrado.'
+
+        Fin Si
+
+        
+        Cerrar archivoClienteAcompanado
+
+    Fin Si
+
+Fin procedimiento
+
+Procedimiento registroGrupo_Familia()
+
+   cedulaExistente <- falso
+
+   si cantPersonas3 < 2000 entonces
+
+      escribir 'Indique la cantidad de adultos que conforman el grupo'
+
+      escribir 'Adultos: '
+
+      leer adultos
+
+      
+      escribir 'Si tiene hijos, indique la cantidad de niños que conforman el grupo'
+
+      escribir 'Niños: '
+
+      leer ninos
+
+      
+      totalGrupo <- adultos + ninos
+
+      
+      para i <- 1 hasta totalGrupo hacer
+
+         cantPersonas3 <- cantPersonas3 + 1
+
+         cedulaExistente <- falso
+
+         
+                 archivoGrupoFamilia <- abrirArchivo('clienteGrupoFamilia.dat')
+
+         
+                  si no existeArchivo('clienteGrupoFamilia.dat') entonces
+
+            crearArchivo(archivoGrupoFamilia)
+
+         
+         escribir 'Por favor, indique los siguientes datos para su proceso de registro'
+
+         
+         repetir
+
+            escribir 'Nombre: '
+
+            leer clienteGrupoFamilia.nombre
+
+         hasta clienteGrupoFamilia.nombre <> ''
+
+         
+         repetir
+
+            escribir 'Apellido: '
+
+            leer clienteGrupoFamilia.apellido
+
+         hasta clienteGrupoFamilia.apellido <> ''
+
+         
+         repetir
+
+            escribir 'Numero de cedula: '
+
+            leer clienteGrupoFamilia.cedula
+
+         hasta clienteGrupoFamilia.cedula <> ''
+
+         
+         repetir
+
+            escribir 'E-mail: '
+
+            leer clienteGrupoFamilia.email
+
+         hasta clienteGrupoFamilia.email <> ''
+
+         
+         repetir
+
+            escribir 'Numero de telefono: '
+
+            leer clienteGrupoFamilia.telefono
+
+         hasta clienteGrupoFamilia.telefono <> ''
+
+         
+         repetir
+ 
+           escribir 'Edad: '
+
+            leer clienteGrupoFamilia.edad
+
+         hasta clienteGrupoFamilia.edad <> ''
+
+         
+         limpiarPantalla()
+
+      fin para
+
+   fin si
+
+   
+   // Verificamos si la cedula ya fue registrada
+
+   archivoGrupoFamilia <- abrirArchivo('clienteGrupoFamilia.dat')
+
+   
+   mientras noFinArchivo(archivoGrupoFamilia) hacer
+
+      linea <- leerLinea(archivoGrupoFamilia)
+
+      si posicion(clienteGrupoFamilia.cedula, linea) > 0 entonces
+
+         cedulaExistente <- verdadero
+
+         romper
+
+      fin si
+
+   fin mientras
+
+   
+   si cedulaExistente = verdadero entonces
+
+      escribir 'El cliente ya se encuentra registrado.'
+
+   fin si
+
+   
+   cerrarArchivo(archivoGrupoFamilia)
+
+Fin procedimiento
+
+INICIO DEL PROGRAMA PRINCIPAL
+
+
+    // INICIALIZACIÓN DE VARIABLES
+
+
+    cantPersonas1 := 0
+
+    cantPersonas2 := 0
+
+    cantPersonas3 := 0
+
+    habitacion := 0
+
+
+    Escribir('||**************************||')
+
+    Escribir('||                               BIENVENIDO                                   ||')
+
+    Escribir('||                    "HOTEL LIDOTEL BOUTIQUE MARGARITA"                      ||')
+
+    Escribir('||**************************||')
+
+    Salto de línea
+
+
+    Escribir('||**************************||')
+
+    Escribir('||                               MENU DE INICIO                               ||')
+
+    Escribir('||**************************||')
+
+    Escribir('||--------------------------| (1) Nuevo Cliente       |-----------------------||')
+
+    Escribir('||--------------------------| (2) Registros guardados |-----------------------||')
+
+    Escribir('||--------------------------| (3) Salir               |-----------------------||')
+
+    Escribir('||**************************||')
+
+    Escribir('|| Indique su opción elegida y presione "ENTER": ')
+
+    Leer(op)
+
+
+    Mientras (op <> 1) y (op <> 2) y (op <> 3) hacer
+
+        Salto de línea
+
+        Escribir('||============================================================================||')
+
+        Escribir('||                   POR FAVOR, SELECCIONE UNA OPCION VALIDA                  ||')
+
+        Escribir('||============================================================================||')
+
+        Escribir('|| Indique su opción elegida y presione "ENTER": ')
+
+        Leer(op)
+
+    Fin mientras
+
+
+    // OPCIÓN 1: NUEVO CLIENTE
+
+
+    Si op = 1 entonces
+
+        // SELECCIÓN DEL TIPO DE RESERVACIÓN
+
+        Escribir('||**************************||')
+
+        Escribir('||                       INDIQUE SU TIPO DE RESERVACION                       ||')
+
+        Escribir('||**************************||')
+
+        Escribir('||                       (1) Reservación individual                           ||')
+
+        Escribir('||----------------------------------------------------------------------------||')
+
+        Escribir('||                       (2) Reservación acompañado                           ||')
+
+        Escribir('||----------------------------------------------------------------------------||')
+
+        Escribir('||                       (3) Reservación Grupal/Familiar                      ||')
+
+        Escribir('||**************************||')
+
+        Escribir('|| Indique su opción elegida y presione "ENTER": ')
+
+        Leer(op)
+
+
+        Mientras (op <> 1) y (op <> 2) y (op <> 3) hacer
+
+            Salto de línea
+
+            Escribir('||============================================================================||')
+
+            Escribir('||                   POR FAVOR, SELECCIONE UNA OPCION VALIDA                  ||')
+
+            Escribir('||============================================================================||')
+
+            Escribir('|| Indique su opción elegida y presione "ENTER": ')
+
+            Leer(op)
+
+        Fin mientras
+
+
+        // RESERVACIÓN INDIVIDUAL
+
+        Si op = 1 entonces
+
+            Si cantPersonas1 < 2000 entonces
+
+                cantPersonas1 := cantPersonas1 + 1
+
+                // REGISTRO INDIVIDUAL
+
+                Escribir('||**************************||')
+
+                Escribir('||                           Reservación Individual                           ||')
+
+                Escribir('||**************************||')
+
+                Salto de línea
+
+                registroIndividual()
+
+                Salto de línea
+
+                Escribir('||......................................................||')
+
+                Escribir('|| Por favor, indique el tiempo de su estadía')
+
+                Escribir('|| Días de estadía: ')
+
+                Leer(cantDias)
+
+            Fin si
+
+      Inicio
+    LimpiarPantalla
+
+    MostrarVentana(1, 1, 80, 80)
+
+    CambiarColorTexto(Amarillo)
+
+    Escribir('||**************************||')
+
+    Escribir('||              INDIQUE EL TIPO DE HABITACIÓN QUE DESEA RESERVAR              ||')
+
+    Escribir('||**************************||')
+
+    CambiarColorTexto(VerdeClaro)
+
+    Escribir('||                      (1) Habitación sencilla: 60$ P/N                      ||')
+
+    CambiarColorTexto(Blanco)
+
+    Escribir('||                      ---------- DESCRIPCIÓN ----------                     ||')
+    Escribir('||  Amplia y confortable habitación decorada con un estilo vanguardista, cama ||')
+
+    Escribir('||  Lidotel Royal King con sábanas de algodón egipcio, soporte para iPod con  ||')
+
+    Escribir('||  reloj despertador, TV 32in HD Plasma con cable, baño con ducha, cafetera  ||')
+
+    Escribir('||  eléctrica, nevera ejecutiva, caja electrónica de seguridad y secador      ||')
+
+    Escribir('||  de cabello.                                                               ||')
+
+    Escribir('||----------------------------------------------------------------------------||')
+
+    CambiarColorTexto(VerdeClaro)
+
+    Escribir('||                       (2) Habitación doble: 120$ P/N                       ||')
+
+    CambiarColorTexto(Blanco)
+
+    Escribir('||                     ---------- DESCRIPCIÓN ----------                      ||')
+
+    Escribir('||  Amplia y confortable habitación decorada con un estilo vanguardista, Dos  ||')
+
+    Escribir('||  Camas Lidotel Full con sábanas de algodón egipcio, soporte para iPod con  ||')
+
+    Escribir('||  reloj despertador, TV 32in HD Plasma con cable, baño con ducha, cafetera  ||')
+
+    Escribir('||  eléctrica, nevera ejecutiva, caja electrónica de seguridad y secador      ||')
+
+    Escribir('||  de cabello.                                                               ||')
+
+    Escribir('||----------------------------------------------------------------------------||')
+
+    CambiarColorTexto(VerdeClaro)
+
+    Escribir('||                          (3) Family Room: 200$ P/N                         ||')
+
+    CambiarColorTexto(Blanco)
+
+    Escribir('||                     ---------- DESCRIPCIÓN ----------                      ||')
+
+    Escribir('||  Cálida y confortable habitación decorada con un estilo vanguardista, 100% ||')
+
+    Escribir('||  libre de humo, cama Lidotel Royal King, con reloj despertador, TV 32in HD ||')
+
+    Escribir('||  Plasma con cable, baño con ducha, cafetera eléctrica, nevera ejecutiva,   ||')
+
+    Escribir('||  caja electrónica de seguridad, secador de cabello, armario adicional      ||')
+
+    Escribir('||  amplio, una habitación separada con 2 camas full, y baño con ducha.       ||')
+
+    Escribir('||----------------------------------------------------------------------------||')
+
+    CambiarColorTexto(VerdeClaro)
+
+    Escribir('||                              (4) Suite: 300$ P/N                           ||')
+
+    CambiarColorTexto(Blanco)
+
+    Escribir('||                     ---------- DESCRIPCIÓN ----------                      ||')
+
+    Escribir('||  Cálida y confortable habitación decorada con un estilo vanguardista, 100% ||')
+
+    Escribir('||  libre de humo, cama Lidotel Royal King, con reloj despertador, TV 32in HD ||')
+
+    Escribir('||  Plasma con cable, 2 baños con ducha, cafetera eléctrica, nevera ejecutiva,||')
+
+    Escribir('||  caja electrónica de seguridad, secador de cabello, armario adicional      ||')
+
+    Escribir('||  amplio y área separada con 2 sofá-cama individuales.                      ||')
+
+    Escribir('||**************************||')
+
+    Escribir('|| Indique su opción a elegir y presione "ENTER": ')
+
+    Leer(op)
+
+    
+    Mientras (op <> 1) y (op <> 2) y (op <> 3) y (op <> 4) hacer
+
+        LimpiarPantalla
+
+        CambiarColorTexto(RojoClaro)
+
+        Escribir('||===========================================================================||')
+
+        Escribir('||                   POR FAVOR, SELECCIONE UNA OPCIÓN VÁLIDA                  ||')
+
+        Escribir('||===========================================================================||')
+
+        CambiarColorTexto(Blanco)
+
+        Escribir('|| Indique su opción a elegir y presione "ENTER": ')
+
+        Leer(op)
+
+    Fin Mientras
+
+    
+    // INICIAMOS UN CASE PARA LA SELECCIÓN DE LA HABITACIÓN QUE DESEA EL USUARIO
+
+    
+    Según op hacer
+
+        1: // Habitación sencilla
+
+            LimpiarPantalla
+
+            habitacion := cantDias * 60
+
+            
+            MostrarVentana(1, 1, 80, 30)
+
+            CambiarColorTexto(Amarillo)
+
+            Escribir('||**************************||')
+
+            Escribir('||                 USTED HA SELECCIONADO LA HABITACIÓN SENCILLA               ||')
+
+            Escribir('||**************************||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('||                 ---------- SU RESERVACIÓN INCLUYE ----------               ||')
+
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inalámbrico a Internet   ||')
+
+            Escribir('||  (WIFI), acceso a las instalaciones del Business Center, uso de nuestra    ||')
+
+            Escribir('||  exclusiva piscina, acceso a nuestro moderno gimnasio y Kit de vanidades.  ||')
+
+            Escribir('||  Niños de 0-2 años sin recargos.                                           ||')
+
+            Escribir('||----------------------------------------------------------------------------||')
+
+            Escribir('||  Si desea realizar la reserva, presione el número 1 y luego ENTER.         ||')
+
+            Escribir('|| Número: ')
+
+            Leer(resp)
+
+            
+        2: // Habitación doble
+
+            LimpiarPantalla
+
+            habitacion := cantDias * 120
+
+            
+            MostrarVentana(1, 1, 80, 30)
+
+            CambiarColorTexto(Amarillo)
+
+            Escribir('||**************************||')
+
+            Escribir('||                USTED HA SELECCIONADO LA HABITACIÓN DOBLE                   ||')
+
+            Escribir('||**************************||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('||                 ---------- SU RESERVACIÓN INCLUYE ----------               ||')
+
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inalámbrico a Internet   ||')
+
+            Escribir('||  (WIFI), acceso a las instalaciones del Business Center, uso de nuestra    ||')
+
+            Escribir('||  exclusiva piscina, acceso a nuestro moderno gimnasio y Kit de vanidades.  ||')
+
+            Escribir('||  Niños de 0 a 2 años sin recargos.                                         ||')
+
+            Escribir('||----------------------------------------------------------------------------||')
+
+            Escribir('||  Si desea realizar la reserva, presione el número 1 y luego ENTER.         ||')
+
+            Escribir('|| Número: ')
+
+            Leer(resp)
+		3: // Family Room
+
+            LimpiarPantalla
+
+            habitacion := cantDias * 200
+
+            
+            MostrarVentana(1, 1, 80, 30)
+
+            CambiarColorTexto(Amarillo)
+
+            Escribir('||**************************||')
+
+            Escribir('||                 USTED HA SELECCIONADO LA FAMILY ROOM                       ||')
+
+            Escribir('||**************************||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('||                 ---------- SU RESERVACIÓN INCLUYE ----------               ||')
+
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inalámbrico a Internet   ||')
+
+            Escribir('||  (WIFI), acceso a Business Center, uso de nuestra exclusiva piscina, acceso||')
+
+            Escribir('||  a nuestro moderno gimnasio, sillas y toldos en la playa y Kit de vanidades||')
+
+            Escribir('||  Niños de 0 a 2 años sin recargos.                                         ||')
+
+            Escribir('||----------------------------------------------------------------------------||')
+
+            Escribir('||  Si desea realizar la reserva, presione el número 1 y luego ENTER.         ||')
+
+            Escribir('|| Número: ')
+
+            Leer(resp)
+
+            
+        4: // Suite
+
+            LimpiarPantalla
+
+            habitacion := cantDias * 300
+
+            
+            MostrarVentana(1, 1, 80, 30)
+
+            CambiarColorTexto(Amarillo)
+
+            Escribir('||**************************||')
+
+            Escribir('||                 USTED HA SELECCIONADO LA SUITE                             ||')
+
+            Escribir('||**************************||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('||                 ---------- SU RESERVACIÓN INCLUYE ----------               ||')
+
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inalámbrico a Internet   ||')
+
+            Escribir('||  (WIFI), acceso a Business Center, uso de nuestra exclusiva piscina, acceso||')
+
+            Escribir('||  a nuestro moderno gimnasio, sillas y toldos en la playa y Kit de vanidades||')
+
+            Escribir('||  Niños de 0 a 2 años sin recargos.                                         ||')
+
+            Escribir('||----------------------------------------------------------------------------||')
+
+            Escribir('||  Si desea realizar la reserva, presione el número 1 y luego ENTER.         ||')
+
+            Escribir('|| Número: ')
+
+            Leer(resp)
+
+    Fin Según
+
+    
+    Escribir('')
+
+    Escribir('')
+
+    CambiarColorTexto(RojoClaro)
+
+    Escribir('|| PRESIONE ENTER PARA MOSTRAR SU REGISTRO ||')
+
+    Leer()
+
+    
+    Si resp = 'si' entonces
+
+        editarDatos := verdadero
+    Sino
+        editarDatos := falso
+
+        
+    Si resp = 'si' entonces
+
+        LimpiarPantalla
+
+        Escribir('||------------------------------------||')
+
+        Escribir('||  Indique el dato que desea editar  ||')
+
+        Escribir('||------------------------------------||')
+
+        Escribir('||           (1) Nombre               ||')
+
+        Escribir('||           (2) Apellido             ||')
+
+        Escribir('||           (3) Cédula               ||')
+
+        Escribir('||           (4) E-mail               ||')
+
+        Escribir('||           (5) Teléfono             ||')
+
+        Escribir('||           (6) Días de su estadia   ||')
+
+        Escribir('||------------------------------------||')
+
+        Leer(op)
+
+        
+        Mientras (op <> 1) y (op <> 2) y (op <> 3) y (op <> 4) y (op <> 5) y (op <> 6) hacer
+
+            CambiarColorTexto(RojoClaro)
+
+            Escribir('||===========================================================================||')
+
+            Escribir('||                   POR FAVOR, SELECCIONE UNA OPCIÓN VÁLIDA                  ||')
+
+            Escribir('||===========================================================================||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('|| Indique su opción a elegir y presione "ENTER": ')
+
+            Leer(op)
+
+        Fin Mientras
+
+    Fin Si
+
+    
+    // CASE PARA EDITAR DATOS DEL REGISTRO
+
+    
+    Según op hacer
+
+        1: 
+            Escribir('||............................................................................||')
+
+            Escribir('|| Nombre: ')
+
+            Leer(clienteIndividual.nombre)
+
+        
+        2: 
+            Escribir('||............................................................................||')
+
+            Escribir('|| Apellido: ')
+
+            Leer(clienteIndividual.apellido)
+
+        
+        3:
+            Escribir('||............................................................................||')
+
+            Escribir('|| Número de cédula: ')
+
+            Leer(clienteIndividual.cedula)
+
+        
+        4: 
+            Escribir('||............................................................................||')
+
+            Escribir('|| E-mail: ')
+
+            Leer(clienteIndividual.email)
+
+        
+        5: 
+            Escribir('||............................................................................||')
+
+            Escribir('|| Número de teléfono: ')
+
+            Leer(clienteIndividual.telefono)
+
+        
+        6: 
+            Escribir('||............................................................................||')
+
+            Escribir('|| Días de estadia: ')
+
+            Leer(cantDias)
+
+    Fin Según
+	CambiarColorTexto(RojoClaro)
+
+    Escribir('|| PRESIONE ENTER PARA CONTINUAR SU PROCESO DE PAGO ||')
+
+    Leer()
+
+    
+    Escribir('')
+
+    Escribir('')
+
+    
+    LimpiarPantalla
+
+    Escribir('||**************************||')
+
+    Escribir('|| Ingrese su dinero para finiquitar su reservación: ')
+
+    Leer(pago)
+
+    procesoCobro()
+
+    
+    CambiarColorTexto(VerdeClaro)
+
+    Escribir('||**************************||')
+
+    Escribir('||---------------------| SU RESERVACIÓN HA SIDO EXITOSA |---------------------||')
+
+    Escribir('||**************************||')
+
+    
+    CambiarColorTexto(RojoClaro)
+
+    Escribir('|| PRESIONE ENTER PARA MOSTRAR SU FACTURA')
+
+    LeerTecla()
+
+    
+    LimpiarPantalla
+
+    
+    Si habitacion = 60 entonces
+
+        descripcion := 'HABITACIÓN SENCILLA'
+
+    Sino Si habitacion = 120 entonces
+
+        descripcion := 'HABITACIÓN DOBLE'
+
+    Sino Si habitacion = 200 entonces
+
+        descripcion := 'FAMILY ROOM'
+
+    Sino Si habitacion = 300 entonces
+
+        descripcion := 'SUITE'
+
+    
+    MostrarFacturaIndividual()
+
+    
+    Si habitacion = 60 entonces
+
+        clienteIndividual.nombre := clienteIndividual.nombre + 'habitación: HABITACIÓN SENCILLA'
+
+    Sino Si habitacion = 120 entonces
+
+        clienteIndividual.nombre := clienteIndividual.nombre + 'habitación: HABITACIÓN DOBLE'
+
+    Sino Si habitacion = 200 entonces
+
+        clienteIndividual.nombre := clienteIndividual.nombre + 'habitación: FAMILY ROOM'
+
+    Sino Si habitacion = 300 entonces
+
+        clienteIndividual.nombre := clienteIndividual.nombre + 'habitación: SUITE'
+
+    
+    Escribir('')
+
+    Escribir('')
+
+    CambiarColorTexto(RojoClaro)
+
+    Escribir('||PRESIONE ENTER PARA VOLVER AL MENÚ DE INICIO||')
+
+    LeerTecla()
+
+    LimpiarPantalla
+
+		Fin
+	fin
+fin
+
+2: inicio 
+	Si cantPersonas2 < 2000 entonces
+
+cantPersonas2 := cantPersonas2 + 1
+
+ inicio 
+LimpiarPantalla
+
+CambiarColorTexto(Amarillo)
+
+Escribir('||||')
+
+Escribir('|| Reservación Acompañado ||')
+
+Escribir('||||')
+
+Escribir('')
+CambiarColorTexto(Blanco)
+
+        RegistroAcompanado()
+
+        
+        Escribir('')
+
+        Escribir('||......................................................||')
+
+        Escribir('|| Por favor, indique el tiempo de su estadía')
+
+        Escribir('|| Días de estadía: ')
+
+        Leer(cantDias)
+
+    end; {fin para mostrar mensaje "reservacion acompañado"}
+
+    
+    begin {inicio para mostrar el tipo de habitaciones}
+
+        LimpiarPantalla
+
+        MostrarVentana(1, 1, 80, 80)
+
+        CambiarColorTexto(Amarillo)
+
+        Escribir('||**************************||')
+
+        Escribir('||              INDIQUE EL TIPO DE HABITACIÓN QUE DESEA RESERVAR              ||')
+
+        Escribir('||**************************||')
+
+        CambiarColorTexto(VerdeClaro)
+
+        Escribir('||                      (1) Habitación sencilla: 60$ P/N                      ||')
+
+        CambiarColorTexto(Blanco)
+
+        Escribir('||                      ---------- DESCRIPCIÓN ----------                     ||')
+
+        Escribir('||  Amplia y confortable habitación decorada con un estilo vanguardista, cama ||')
+
+        Escribir('||  Lidotel Royal King con sábanas de algodón egipcio, soporte para iPod con  ||')
+
+        Escribir('||  reloj despertador, TV 32in HD Plasma con cable, baño con ducha, cafetera  ||')
+
+        Escribir('||  eléctrica, nevera ejecutiva, caja electrónica de seguridad y secador      ||')
+
+        Escribir('||  de cabello.                                                               ||')
+
+        Escribir('||----------------------------------------------------------------------------||')
+
+        CambiarColorTexto(VerdeClaro)
+
+        Escribir('||                       (2) Habitación doble: 120$ P/N                       ||')
+
+        CambiarColorTexto(Blanco)
+
+        Escribir('||                     ---------- DESCRIPCIÓN ----------                      ||')
+
+        Escribir('||  Amplia y confortable habitación decorada con un estilo vanguardista, Dos  ||')
+
+        Escribir('||  Camas Lidotel Full con sábanas de algodón egipcio, soporte para iPod con  ||')
+
+        Escribir('||  reloj despertador, TV 32in HD Plasma con cable, baño con ducha, cafetera  ||')
+
+        Escribir('||  eléctrica, nevera ejecutiva, caja electrónica de seguridad y secador      ||')
+
+        Escribir('||  de cabello.                                                               ||')
+
+        Escribir('||----------------------------------------------------------------------------||')
+
+        CambiarColorTexto(VerdeClaro)
+
+        Escribir('||                          (3) Family Room: 200$ P/N                         ||')
+
+        CambiarColorTexto(Blanco)
+
+        Escribir('||                     ---------- DESCRIPCIÓN ----------                      ||')
+
+        Escribir('||  Cálida y confortable habitación decorada con un estilo vanguardista, 100% ||')
+
+        Escribir('||  libre de humo, cama Lidotel Royal King, con reloj despertador, TV 32in HD ||')
+
+        Escribir('||  Plasma con cable, baño con ducha, cafetera eléctrica, nevera ejecutiva,   ||')
+
+        Escribir('||  caja electrónica de seguridad, secador de cabello, armario adicional      ||')
+
+        Escribir('||  amplio, una habitación separada con 2 camas full, y baño con ducha.       ||')
+
+        Escribir('||----------------------------------------------------------------------------||')
+
+        CambiarColorTexto(VerdeClaro)
+
+        Escribir('||                              (4) Suite: 300$ P/N                           ||')
+
+        CambiarColorTexto(Blanco)
+
+        Escribir('||                     ---------- DESCRIPCIÓN ----------                      ||')
+
+        Escribir('||  Cálida y confortable habitación decorada con un estilo vanguardista, 100% ||')
+
+        Escribir('||  libre de humo, cama Lidotel Royal King, con reloj despertador, TV 32in HD ||')
+
+        Escribir('||  Plasma con cable, 2 baños con ducha, cafetera eléctrica, nevera ejecutiva,||')
+
+        Escribir('||  caja electrónica de seguridad, secador de cabello, armario adicional      ||')
+
+        Escribir('||  amplio y área separada con 2 sofá-cama individuales.                      ||')
+
+        Escribir('||**************************||')
+
+        Escribir('|| Indique su opción a elegir y presione "ENTER": ')
+
+        Leer(op)
+
+        
+        Mientras (op <> 1) y (op <> 2) y (op <> 3) y (op <> 4) hacer
+
+            CambiarColorTexto(RojoClaro)
+
+            Escribir('||===========================================================================||')
+
+            Escribir('||                   POR FAVOR, SELECCIONE UNA OPCIÓN VÁLIDA                  ||')
+
+            Escribir('||===========================================================================||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('|| Indique su opción a elegir y presione "ENTER": ')
+
+            Leer(op)
+
+        Fin Mientras
+
+    end; {fin para mostrar el tipo de habitaciones}
+
+    
+    // INICIAMOS UN CASE PARA LA SELECCIÓN DE LA HABITACIÓN QUE DESEA EL USUARIO
+
+    
+    Según op hacer
+
+        1: // Habitación Sencilla
+
+            LimpiarPantalla
+
+            habitacion := cantDias * 60
+            
+            MostrarVentana(1, 1, 80, 30)
+
+            CambiarColorTexto(Amarillo)
+
+            Escribir('||**************************||')
+
+            Escribir('||                 USTED HA SELECCIONADO LA HABITACIÓN SENCILLA               ||')
+
+            Escribir('||**************************||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('||                 ---------- SU RESERVACIÓN INCLUYE ----------               ||')
+
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inalámbrico a Internet   ||')
+
+            Escribir('||  (WIFI), acceso a las instalaciones del Business Center, uso de nuestra    ||')
+
+            Escribir('||  exclusiva piscina, acceso a nuestro moderno gimnasio y Kit de vanidades.  ||')
+
+            Escribir('||  Niños de 0-2 años sin recargos.                                           ||')
+
+            Escribir('||----------------------------------------------------------------------------||')
+
+            Escribir('||  Si desea realizar la reservación, presione el número 1 y luego ENTER.     ||')
+
+            Escribir('|| Número: ')
+
+            Leer(resp)
+
+        2: // Habitación Doble
+
+            LimpiarPantalla
+
+            habitacion := cantDias * 120
+
+            
+            MostrarVentana(1, 1, 80, 30)
+
+            CambiarColorTexto(Amarillo)
+
+            Escribir('||**************************||')
+
+            Escribir('||                  USTED HA SELECCIONADO LA HABITACIÓN DOBLE                 ||')
+
+            Escribir('||**************************||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('||                 ---------- SU RESERVACIÓN INCLUYE ----------               ||')
+
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inalámbrico a Internet   ||')
+
+            Escribir('||  (WIFI), acceso a las instalaciones del Business Center, uso de nuestra    ||')
+
+            Escribir('||  exclusiva piscina, acceso a nuestro moderno gimnasio y Kit de vanidades.  ||')
+
+            Escribir('||  Niños de 0 a 2 años sin recargos.                                         ||')
+
+            Escribir('||----------------------------------------------------------------------------||')
+ 
+            Escribir('||  Si desea realizar la reservación, presione el número 1 y luego ENTER.     ||')
+  
+            Escribir('|| Número: ')
+
+            Leer(resp)
+
+        3: // Family Room
+
+            LimpiarPantalla
+
+            habitacion := cantDias * 200
+
+            
+            MostrarVentana(1, 1, 80, 30)
+
+            CambiarColorTexto(Amarillo)
+
+            Escribir('||**************************||')
+
+            Escribir('||                     USTED HA SELECCIONADO LA FAMILY ROOM                   ||')
+
+            Escribir('||**************************||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('||                 ---------- SU RESERVACIÓN INCLUYE ----------               ||')
+
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inalámbrico a Internet   ||')
+
+            Escribir('||  (WIFI), acceso a Business Center, uso de nuestra exclusiva piscina, acceso||')
+
+            Escribir('||  a nuestro moderno gimnasio, sillas y toldos en la playa y Kit de vanidades||')
+
+            Escribir('||  Niños de 0 a 2 años sin recargos.                                         ||')
+
+            Escribir('||----------------------------------------------------------------------------||')
+
+            Escribir('||  Si desea realizar la reservación, presione el número 1 y luego ENTER.     ||')
+
+            Escribir('|| Número: ')
+
+            Leer(resp)
+
+        4: // Suite
+
+            LimpiarPantalla
+
+            habitacion := cantDias * 300
+
+            
+            MostrarVentana(1, 1, 80, 30)
+
+            CambiarColorTexto(Amarillo)
+
+            Escribir('||**************************||')
+
+            Escribir('||                        USTED HA SELECCIONADO LA SUITE                      ||')
+
+            Escribir('||**************************||')
+
+            CambiarColorTexto(Blanco)
+
+            Escribir('||                 ---------- SU RESERVACIÓN INCLUYE ----------               ||')
+
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inalámbrico a Internet   ||')
+
+            Escribir('||  (WIFI), acceso a Business Center, uso de nuestra exclusiva piscina, acceso||')
+
+            Escribir('||  a nuestro moderno gimnasio, sillas y toldos en la playa y Kit de vanidades||')
+
+            Escribir('||  Niños de 0 a 2 años sin recargos.                                         ||')
+
+            Escribir('||----------------------------------------------------------------------------||')
+
+            Escribir('||  Si desea realizar la reservación, presione el número 1 y luego ENTER.     ||')
+
+            Escribir('|| Número: ')
+
+            Leer(resp)
+
+    Fin Según
+
+    
+    Escribir('')
+
+    Escribir('')
+
+    CambiarColorTexto(RojoClaro)
+
+    Escribir('|| PRESIONE ENTER PARA MOSTRAR SU REGISTRO ||')
+
+    LeerTecla()
+
+    
+    begin {inicio ingresar dinero}
+
+        LimpiarPantalla
+
+        Escribir('')
+
+        Escribir('')
+
+        CambiarColorTexto(Blanco)
+
+        Escribir('||**************||')
+
+        Escribir('||         DATOS DE SU RESERVACIÓN        ||')
+
+        Escribir('||**************||')
+
+        Escribir('|| Nombre: ', clienteAcompanado.nombre)
+
+        Escribir('||========================================||')
+
+        Escribir('|| Apellido: ', clienteAcompanado.apellido)
+
+        Escribir('||========================================||')
+
+        Escribir('|| Cédula: ', clienteAcompanado.cedula)
+
+        Escribir('||========================================||')
+
+        Escribir('|| Teléfono: ', clienteAcompanado.telefono)
+
+        Escribir('||========================================||')
+        Escribir('|| E-mail: ', clienteAcompanado.email)
+
+        Escribir('||========================================||')
+
+        Escribir('|| Sus días de estadía son: ', cantDias)
+
+        CambiarColorTexto(VerdeClaro)
+
+        Escribir('||========================================||')
+
+        Escribir('|| LA TOTALIDAD DE SU CUENTA SERÍA DE: ', habitacion, '$')
+
+        Escribir('||**************||')
+
+        
+        Escribir('')
+
+        Escribir('')
+
+        CambiarColorTexto(RojoClaro)
+
+        Escribir('|| PRESIONE ENTER PARA CONTINUAR ||')
+
+        LeerTecla()
+
+        
+        CambiarColorTexto(RojoClaro)
+
+        Escribir('|| ¿Desea editar algún dato de su Registro? (Sí/no): ')
+
+        Leer(resp)
+
+        
+        Si resp = 'si' entonces
+
+            	editarDatos := true
+
+        Sino
+            editarDatos := false
+
+        Fin Si
+
+        
+        Si resp = 'si' entonces
+
+            LimpiarPantalla
+            Escribir('||------------------------------------||')
+
+            Escribir('||  Indique el dato que desea editar  ||')
+
+            Escribir('||------------------------------------||')
+
+            Escribir('||           (1) Nombre               ||')
+
+            Escribir('||           (2) Apellido             ||')
+
+            Escribir('||           (3) Cédula               ||')
+
+            Escribir('||           (4) E-mail               ||')
+
+            Escribir('||           (5) Teléfono             ||')
+
+            Escribir('||           (6) Edad                 ||')
+
+            Escribir('||           (7) Días de su estadía   ||')
+
+            Escribir('||------------------------------------||')
+
+            Leer(op)
+
+            
+            Mientras (op <> 1) y (op <> 2) y (op <> 3) y (op <> 4) y (op <> 5) y (op <> 6) hacer
+
+                CambiarColorTexto(RojoClaro)
+
+                Escribir('||===========================================================================||')
+
+                Escribir('||                   POR FAVOR, SELECCIONE UNA OPCIÓN VÁLIDA                  ||')
+
+                Escribir('||===========================================================================||')
+
+                CambiarColorTexto(Blanco)
+
+                Escribir('|| Indique su opción a elegir y presione "ENTER": ')
+
+                Leer(op)
+
+            Fin Mientras
+
+        Fin Si
+
+    Fin 
+
+Fin
+
+según op hacer
+
+    caso 1:
+ 
+	inicio
+        	escribir '||............................................................................||'
+
+        	escribir '|| Nombre: '
+        leer clienteAcompanado.nombre
+
+    	fin del caso
+
+
+    
+    caso 2:
+ 
+	inicio
+        	escribir '||............................................................................||'
+
+        	escribir '|| Apellido: '
+
+        	leer clienteAcompanado.apellido
+
+    	fin del caso
+
+
+
+	caso 3:  
+	inicio
+        	escribir '|| Número de cédula: '
+        	leer clienteAcompanado.cedula
+
+   	 fin del caso
+
+
+    
+    caso 4:
+    
+	inicio
+    		escribir '||............................................................................||'
+
+        	escribir '|| E-mail: '
+
+        	leer clienteAcompanado.email
+
+    	fin del caso
+
+    
+    caso 5:
+ 
+	inicio       
+		escribir '||............................................................................||'
+
+        	escribir '|| Número de teléfono: '
+
+    	    	leer clienteAcompanado.telefono
+
+   	 fin del caso
+
+
+    
+    caso 6:
+ 
+	inicio       
+		escribir '||............................................................................||'
+
+        	escribir '|| Edad: '
+
+        	leer clienteAcompanado.edad
+
+    	fin del caso
+
+
+    
+    caso 7:
+ 
+	inicio       
+		escribir '||............................................................................||'
+
+        	escribir '|| Días de estadía: '
+
+        	leer cantDias
+
+   	 fin del caso
+
+fin del según
+escribir '|| PRESIONE ENTER PARA CONTINUAR SU PROCESO DE PAGO ||'
+
+leer()
+
+
+escribir('')
+
+escribir('')
+
+
+limpiarPantalla()
+
+escribir('||**************************||')
+
+escribir('|| Ingrese su dinero para finiquitar su reservación: ')
+
+leer pago
+procesoCobro()
+
+
+escribir('')
+
+
+escribir('||**************************||')
+
+escribir('||---------------------| SU RESERVACIÓN HA SIDO EXITOSA |---------------------||'
+
+escribir('||**************************||')
+
+
+escribir('')
+
+
+escribir('')
+
+escribir('')
+
+escribir('PRESIONE "ENTER" PARA MOSTRAR SU FACTURA')
+
+leerTecla()
+
+
+limpiarPantalla()
+
+si habitacion = 60 entonces
+
+    descripcion := 'HABITACIÓN SENCILLA'
+
+	
+si habitacion = 120 entonces
+
+    descripcion := 'HABITACIÓN DOBLE'
+		
+si habitacion = 200 entonces
+
+    descripcion := 'FAMILY ROOM'
+
+	
+si habitacion = 300 entonces
+
+    descripcion := 'SUITE'
+
+
+
+MostrarFacturaAcompanado()
+
+si habitacion = 60 entonces
+
+    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitación: HABITACIÓN SENCILLA'
+
+	
+si habitacion = 120 entonces
+
+    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitación: HABITACIÓN DOBLE'
+
+	
+si habitacion = 200 entonces
+
+    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitación: FAMILY ROOM'
+
+	
+si habitacion = 300 entonces
+
+    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitación: SUITE'
+
+
+
+escribir('')
+
+escribir('')
+
+escribir('PRESIONE ENTER PARA VOLVER AL MENÚ DE INICIO')
+
+leerTecla()
+
+limpiarPantalla()
+si opcion = 3 entonces  {INICIO OPCION 3 - RESERVACION GRUPO/FAMILIA}
+
+    si cantPersonas3 < 2000 entonces
+
+        inicio {mostrar mensaje "reservacion grupo/familia" y preguntar la cantidad de niños y adultos}
+
+            limpiarPantalla()
+
+            escribir('||**************************||')
+
+            escribir('||               Reservación Grupo/Familia - Indique la cantidad               ||')
+
+            escribir('||**************************||')
+
+            escribir('')
+
+            
+            registroGrupo_Familia()
+
+            
+            escribir('')
+
+            escribir('||......................................................||')
+
+            escribir('|| Por favor, indique el tiempo de su estadía.')
+
+            escribir('|| Días de estadía: ')
+
+            leer cantDias
+
+            
+            limpiarPantalla()
+
+            escribir('')
+
+            escribir('PRESIONE ENTER PARA ACCEDER A LAS HABITACIONES DISPONIBLES')
+
+            leerTecla()
+
+        fin {fin del mensaje "reservacion grupo/familia" y preguntar la cantidad de niños y adultos}
+
+        
+        inicio {mostrar el tipo de habitaciones}
+
+            limpiarPantalla()
+
+            ventana(1, 1, 80, 80)
+ 
+            escribir('||**************************||')
+
+            escribir('||              INDIQUE EL TIPO DE HABITACIÓN QUE DESEA RESERVAR              ||')
+
+            escribir('||**************************||')
+
+            escribir('')
+
+            escribir('||                      (1) Habitación sencilla: 60$ P/N                      ||')
+
+            escribir('||                      ---------- DESCRIPCIÓN ----------                     ||')
+
+            escribir('||  Amplia y confortable habitación decorada con un estilo vanguardista, cama ||')
+
+            escribir('||  Lidotel Royal King con sábanas de algodón egipcio, soporte para iPod con  ||')
+
+            escribir('||  reloj despertador, TV 32in HD Plasma con cable, baño con ducha, cafetera  ||')
+
+            escribir('||  eléctrica, nevera ejecutiva, caja electrónica de seguridad y secador      ||')
+
+            escribir('||  de cabello.                                                               ||')
+
+            escribir('||----------------------------------------------------------------------------||')
+
+            escribir('||                       (2) Habitación doble: 120$ P/N                       ||')
+
+            escribir('||                     ---------- DESCRIPCIÓN ----------                      ||')
+
+            escribir('||  Amplia y confortable habitación decorada con un estilo vanguardista, Dos  ||')
+
+            escribir('||  Camas Lidotel Full con sábanas de algodón egipcio, soporte para iPod con  ||')
+
+            escribir('||  reloj despertador, TV 32in HD Plasma con cable, baño con ducha, cafetera  ||')
+
+            escribir('||  eléctrica, nevera ejecutiva, caja electrónica de seguridad y secador      ||')
+
+            escribir('||  de cabello.                                                               ||')
+
+            escribir('||----------------------------------------------------------------------------||')
+
+            escribir('||                          (3) Family Room: 200$ P/N                         ||')
+
+            escribir('||                         ------ DESCRIPCIÓN ----------                      ||')
+	    escribir('||  despertador, TV 32in HD Plasma con cable, 2 baños con ducha, cafetera eléctrica,||')
+
+            escribir('||  nevera ejecutiva, caja electrónica de seguridad, secador de cabello,         ||')
+
+            escribir('||  armario adicional amplio y área separada con 2 sofá-cama individuales.        ||')
+
+            escribir('||**************************||')
+
+            escribir('|| Indique su opción a elegir y presione "ENTER": ')
+
+            leer op
+
+Mientras (op <> 1) y (op <> 2) y (op <> 3) y (op <> 4) hacer
+
+    Escribir("Por favor, seleccione una opción válida")
+
+    Leer op
+
+fin mientras
+
+
+Según op hacer
+    
+1:
+        
+LimpiarPantalla()
+
+        habitacion = cantDias * 60
+
+        Escribir("Ha seleccionado la Habitación Sencilla")
+
+        Escribir("Su reservación incluye:")
+
+        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inalámbrico a Internet (WIFI)")
+
+        Escribir("- Acceso a las instalaciones del Business Center")
+
+        Escribir("- Uso de nuestra exclusiva piscina")
+
+        Escribir("- Acceso al moderno gimnasio")
+
+        Escribir("- Kit de vanidades")
+
+        Escribir("Niños de 0-2 años sin recargos")
+
+        Escribir("Si desea realizar la reservación, presione 1 y luego ENTER")
+
+        Leer resp
+
+
+    2:
+        
+LimpiarPantalla()
+
+        habitacion = cantDias * 120
+
+        Escribir("Ha seleccionado la Habitación Doble")
+
+        Escribir("Su reservación incluye:")
+
+        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inalámbrico a Internet (WIFI)")
+
+        Escribir("- Acceso a las instalaciones del Business Center")
+
+        Escribir("- Uso de nuestra exclusiva piscina")
+
+        Escribir("- Acceso al moderno gimnasio")
+
+        Escribir("- Kit de vanidades")
+
+        Escribir("Niños de 0 a 2 años sin recargos")
+
+        Escribir("Si desea realizar la reservación, presione 1 y luego ENTER")
+
+        Leer resp
+
+
+    3:
+
+        LimpiarPantalla()
+
+        habitacion = cantDias * 200
+
+        Escribir("Ha seleccionado la Family Room")
+
+        Escribir("Su reservación incluye:")
+
+        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inalámbrico a Internet (WIFI)")
+
+        Escribir("- Acceso al Business Center")
+
+        Escribir("- Uso de nuestra exclusiva piscina")
+
+        Escribir("- Acceso al moderno gimnasio")
+
+        Escribir("- Sillas y toldos en la playa")
+
+        Escribir("- Kit de vanidades")
+
+        Escribir("Niños de 0 a 2 años sin recargos")
+
+        Escribir("Si desea realizar la reservación, presione 1 y luego ENTER")
+
+        Leer resp
+
+
+    4:
+
+        LimpiarPantalla()
+
+        habitacion = cantDias * 300
+
+        Escribir("Ha seleccionado la Suite")
+
+        Escribir("Su reservación incluye:")
+
+        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inalámbrico a Internet (WIFI)")
+
+        Escribir("- Acceso al Business Center")
+
+        Escribir("- Uso de nuestra exclusiva piscina")
+
+        Escribir("- Acceso al moderno gimnasio")
+
+        Escribir("- Sillas y toldos en la playa")
+
+        Escribir("- Kit de vanidades")
+
+        Escribir("Niños de 0 a 2 años sin recargos")
+
+        Escribir("Si desea realizar la reservación, presione 1 y luego ENTER")
+
+        Leer resp
+
+fin según
+
+
+Escribir("")
+
+Escribir("")
+
+Escribir("Presione ENTER para mostrar su registro")
+
+Leer()
+
+
+editarDatos = falso
+LimpiarPantalla()
+
+Escribir("Datos de su reservación:")
+
+Escribir("Nombre: " + clienteGrupoFamilia.nombre)
+
+Escribir("Apellido: " + clienteGrupoFamilia.apellido)
+
+Escribir("Cédula: " + clienteGrupoFamilia.cedula)
+
+Escribir("Teléfono: " + clienteGrupoFamilia.telefono)
+
+Escribir("E-mail: " + clienteGrupoFamilia.email)
+
+Escribir("Días de estadía: " + cantDias)
+
+Escribir("La totalidad de su cuenta sería de: " + habitacion + "$")
+
+
+Escribir("")
+
+Escribir("")
+
+Escribir("Presione ENTER para continuar")
+
+Leer()
+
+
+Escribir("¿Desea editar algún dato de su registro? (Si/no): ")
+
+Leer resp
+
+
+si resp = "si" entonces
+
+    editarDatos = verdadero
+sino
+
+    editarDatos = falso
+
+fin si
+si editarDatos entonces
+
+    LimpiarPantalla()
+
+    Escribir("Indique el dato que desea editar:")
+
+    Escribir("(1) Nombre")
+
+    Escribir("(2) Apellido")
+
+    Escribir("(3) Cédula")
+
+    Escribir("(4) E-mail")
+
+    Escribir("(5) Teléfono")
+
+    Escribir("(6) Edad")
+
+    Escribir("(7) Días de estadía")
+
+    Leer op
+
+
+    mientras (op <> 1) y (op <> 2) y (op <> 3) y (op <> 4) y (op <> 5) y (op <> 6) hacer
+
+        Escribir("Por favor, seleccione una opción válida")
+
+        Leer op
+
+    fin mientras
+
+
+    según op hacer
+
+        1:
+
+            Escribir("Nombre: ")
+
+            Leer clienteGrupoFamilia.nombre
+
+        2:
+            Escribir("Apellido: ")
+
+            Leer clienteGrupoFamilia.apellido
+
+        3:
+
+            Escribir("Número de cédula: ")
+
+            Leer clienteGrupoFamilia.cedula
+
+        4:
+
+            Escribir("E-mail: ")
+
+            Leer clienteGrupoFamilia.email
+
+        5:
+
+            Escribir("Número de teléfono: ")
+
+            Leer clienteGrupoFamilia.telefono
+
+        6:
+
+            Escribir("Edad: ")
+
+            Leer clienteAcompanado.edad
+
+        7:
+
+            Escribir("Días de estadía: ")
+
+            Leer cantDias
+
+    fin según
+fin si
+
+
+Escribir("")
+
+Escribir("")
+
+Escribir("Presione ENTER para continuar con el proceso de pago")
+
+Leer()
+
+
+LimpiarPantalla()
+
+Escribir("Ingrese su dinero para finalizar la reservación: ")
+
+Leer 
+pago
+procesoCobro()
+
+
+Escribir("")
+
+Escribir("")
+Escribir("¡SU RESERVACIÓN HA SIDO EXITOSA!")
+
+Escribir("Presione ENTER para mostrar su factura")
+
+LeerTecla()
+
+
+LimpiarPantalla()
+
+MostrarFacturaGrupo_Familia()
+
+
+Escribir("")
+
+Escribir("")
+
+Escribir("Presione ENTER para volver al menú de inicio")
+
+LeerTecla()
+
+LimpiarPantalla()
+
+
+Fin del programa principal.
