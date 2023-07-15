@@ -122,9 +122,8 @@ begin {INICIO DEL PROCEDIMIENTO MOSTRAR FACTURA}
 	writeln('||  Telefono: ', (clienteIndividual.telefono));
 	writeln('||  Dias de estadia: ', cantDias);
 	writeln('||  Habitacion: ', descripcion);
-	writeln('||  Total cuenta: ', habitacion, '$');
 	writeln('||=========================================================||');
-	writeln('||                        TOTAL A PAGAR $.  ', habitacion, '$');
+	writeln('||                                 TOTAL A PAGAR->  ', habitacion, '$');
 	writeln('||*********************************************************||');
 end; {FIN DEL PROCEDIMIENTO MOSTRAR FACTURA}
 
@@ -146,9 +145,8 @@ begin {INICIO DEL PROCEDIMIENTO MOSTRAR FACTURA}
 	writeln('||  Telefono: ', (clienteAcompanado.telefono));
 	writeln('||  Dias de estadia: ', cantDias);
 	writeln('||  Habitacion: ', descripcion);
-	writeln('||  Total cuenta: ', habitacion, '$');
 	writeln('||=========================================================||');
-	writeln('||                        TOTAL A PAGAR $.  ', habitacion, '$');
+	writeln('||                                 TOTAL A PAGAR->  ', habitacion, '$');
 	writeln('||*********************************************************||');
 end; {FIN DEL PROCEDIMIENTO MOSTRAR FACTURA}
 
@@ -170,9 +168,8 @@ begin {INICIO DEL PROCEDIMIENTO MOSTRAR FACTURA}
 	writeln('||  Telefono: ', (clienteGrupoFamilia.telefono));
 	writeln('||  Dias de estadia: ', cantDias);
 	writeln('||  Habitacion: ', descripcion);
-	writeln('||  Total cuenta: ', habitacion, '$');
 	writeln('||=========================================================||');
-	writeln('||                        TOTAL A PAGAR $.  ', habitacion, '$');
+	writeln('||                                 TOTAL A PAGAR->  ', habitacion, '$');
 	writeln('||*********************************************************||');
 end; {FIN DEL PROCEDIMIENTO MOSTRAR FACTURA}
 
