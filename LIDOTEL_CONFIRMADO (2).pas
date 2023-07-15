@@ -108,54 +108,72 @@ end; {FIN DEL PROCEDIMIENTO DE COBRO}
 
 procedure MostrarFacturaIndividual();
 begin {INICIO DEL PROCEDIMIENTO MOSTRAR FACTURA}
-	writeln('||****************************************||');
-	writeln('||                 FACTURA                ||');
-	writeln('||****************************************||');
-	writeln('||Nombre: ', (clienteIndividual.nombre));
-	writeln('||Apellido: ', (clienteIndividual.apellido));
-	writeln('||Cedula: ', (clienteIndividual.cedula));
-	writeln('||E-mail: ', (clienteIndividual.email));
-	writeln('||Telefono: ', (clienteIndividual.telefono));
-	writeln('||Dias de estadia: ', cantDias);
-	writeln('||Habitacion: ', descripcion);
-	writeln('||Total cuenta: ', habitacion, '$');
-	writeln('||****************************************||');
+	textcolor(lightgreen);
+	writeln('||*********************************************************||');
+	writeln('||                          FACTURA                        ||');
+	writeln('||*********************************************************||');
+	writeln('|| EMPRESA: Lidotel Boutique             FECHA: 00/00/0000 ||');
+	writeln('|| DIRECCION: C.C Sambil Margarita                         ||');
+	writeln('||*********************************************************||');
+	writeln('||  Nombre: ', (clienteIndividual.nombre));
+	writeln('||  Apellido: ', (clienteIndividual.apellido));
+	writeln('||  Cedula: ', (clienteIndividual.cedula));
+	writeln('||  E-mail: ', (clienteIndividual.email));
+	writeln('||  Telefono: ', (clienteIndividual.telefono));
+	writeln('||  Dias de estadia: ', cantDias);
+	writeln('||  Habitacion: ', descripcion);
+	writeln('||  Total cuenta: ', habitacion, '$');
+	writeln('||=========================================================||');
+	writeln('||                        TOTAL A PAGAR $.  ', habitacion, '$');
+	writeln('||*********************************************************||');
 end; {FIN DEL PROCEDIMIENTO MOSTRAR FACTURA}
 
 ////////////////////////////////////////////////////////////////////////
 
 procedure MostrarFacturaAcompanado();
 begin {INICIO DEL PROCEDIMIENTO MOSTRAR FACTURA}
-	writeln('||****************************************||');
-	writeln('||                 FACTURA                ||');
-	writeln('||****************************************||');
-	writeln('||Nombre: ', (clienteAcompanado.nombre));
-	writeln('||Apellido: ', (clienteAcompanado.apellido));
-	writeln('||Cedula: ', (clienteAcompanado.cedula));
-	writeln('||E-mail: ', (clienteAcompanado.email));
-	writeln('||Telefono: ', (clienteAcompanado.telefono));
-	writeln('||Dias de estadia: ', cantDias);
-	writeln('||Habitacion: ', descripcion);
-	writeln('||Total cuenta: ', habitacion, '$');
-	writeln('||****************************************||');
+	textcolor(lightgreen);
+	writeln('||*********************************************************||');
+	writeln('||                          FACTURA                        ||');
+	writeln('||*********************************************************||');
+	writeln('|| EMPRESA: Lidotel Boutique             FECHA: 00/00/0000 ||');
+	writeln('|| DIRECCION: C.C Sambil Margarita                         ||');
+	writeln('||*********************************************************||');
+	writeln('||  Nombre: ', (clienteAcompanado.nombre));
+	writeln('||  Apellido: ', (clienteAcompanado.apellido));
+	writeln('||  Cedula: ', (clienteAcompanado.cedula));
+	writeln('||  E-mail: ', (clienteAcompanado.email));
+	writeln('||  Telefono: ', (clienteAcompanado.telefono));
+	writeln('||  Dias de estadia: ', cantDias);
+	writeln('||  Habitacion: ', descripcion);
+	writeln('||  Total cuenta: ', habitacion, '$');
+	writeln('||=========================================================||');
+	writeln('||                        TOTAL A PAGAR $.  ', habitacion, '$');
+	writeln('||*********************************************************||');
 end; {FIN DEL PROCEDIMIENTO MOSTRAR FACTURA}
 
 ////////////////////////////////////////////////////////////////////////
 
 procedure MostrarFacturaGrupo_Familia();
 begin {INICIO DEL PROCEDIMIENTO MOSTRAR FACTURA}
-	writeln('||****************************************||');
-	writeln('||                FACTURA                 ||');
-	writeln('||****************************************||');
-	writeln('||Nombre: ', (clienteGrupoFamilia.nombre));
-	writeln('||Apellido: ', (clienteGrupoFamilia.apellido));
-	writeln('||Cedula: ', (clienteGrupoFamilia.cedula));
-	writeln('||E-mail: ', (clienteGrupoFamilia.email));
-	writeln('||Telefono: ', (clienteGrupoFamilia.telefono));
-	writeln('||Dias de estadia: ', cantDias);
-	writeln('||Habitacion: ', descripcion);
-	writeln('||Total cuenta: ', habitacion, '$');
-	writeln('||****************************************||');
+	textcolor(lightgreen);
+	writeln('||*********************************************************||');
+	writeln('||                          FACTURA                        ||');
+	writeln('||*********************************************************||');
+	writeln('|| EMPRESA: Lidotel Boutique             FECHA: 00/00/0000 ||');
+	writeln('|| DIRECCION: C.C Sambil Margarita                         ||');
+	writeln('||*********************************************************||');
+	writeln('||  Nombre: ', (clienteGrupoFamilia.nombre));
+	writeln('||  Apellido: ', (clienteGrupoFamilia.apellido));
+	writeln('||  Cedula: ', (clienteGrupoFamilia.cedula));
+	writeln('||  E-mail: ', (clienteGrupoFamilia.email));
+	writeln('||  Telefono: ', (clienteGrupoFamilia.telefono));
+	writeln('||  Dias de estadia: ', cantDias);
+	writeln('||  Habitacion: ', descripcion);
+	writeln('||  Total cuenta: ', habitacion, '$');
+	writeln('||=========================================================||');
+	writeln('||                        TOTAL A PAGAR $.  ', habitacion, '$');
+	writeln('||*********************************************************||');
 end; {FIN DEL PROCEDIMIENTO MOSTRAR FACTURA}
 
 //PROCEDIMIENTO PARA PEDIR DATOS AL USUARIO EN EL REGISTRO INDIVIDUAL
