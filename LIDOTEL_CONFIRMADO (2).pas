@@ -1,3 +1,6 @@
+{*Paola Marquez
+ *Gabriel Cardona}
+
 program hotelLidotel;
 uses crt, SysUtils;
 
