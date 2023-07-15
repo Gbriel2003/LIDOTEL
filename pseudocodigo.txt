@@ -122,25 +122,22 @@ procedimiento MostrarFacturaIndividual();
 
 
 inicio
-
-escribir('|| FACTURA ||');
-
-escribir('||Nombre: ', clienteIndividual.nombre);
-
-escribir('||Apellido: ', clienteIndividual.apellido);
-
-escribir('||Cedula: ', clienteIndividual.cedula);
-
-escribir('||E-mail: ', clienteIndividual.email);
-
-escribir('||Telefono: ', clienteIndividual.telefono)
-
-escribir('||Dias de estadia: ', cantDias);
-
-escribir('||Habitacion: ', descripcion);
-
-escribir('||Total cuenta: ', habitacion, '$');
-
+	escribir('||*********************************************************||');
+	escribir('||                          FACTURA                        ||');
+	escribir('||*********************************************************||');
+	escribir('|| EMPRESA: Lidotel Boutique             FECHA: 00/00/0000 ||');
+	escribir('|| DIRECCION: C.C Sambil Margarita                         ||');
+	escribir('||*********************************************************||');
+	escribir('||  Nombre: ', (clienteIndividual.nombre));
+	escribir('||  Apellido: ', (clienteIndividual.apellido));
+	escribir('||  Cedula: ', (clienteIndividual.cedula));
+	escribir('||  E-mail: ', (clienteIndividual.email));
+	escribir('||  Telefono: ', (clienteIndividual.telefono));
+	escribir('||  Dias de estadia: ', cantDias);
+	escribir('||  Habitacion: ', descripcion);
+	escribir('||=========================================================||');
+	escribir('||                                 TOTAL A PAGAR->  ', habitacion, '$');
+	escribi('||*********************************************************||');
 
 fin;
 
@@ -148,26 +145,29 @@ procedimiento MostrarFacturaAcompanado();
 
 
 inicio
+escribir('||*********************************************************||');
+	escribir('||                          FACTURA                        ||');
+	escribir('||*********************************************************||');
+	escribir('|| EMPRESA: Lidotel Boutique             FECHA: 00/00/0000 ||');
+	escribir('|| DIRECCION: C.C Sambil Margarita                         ||');
+	escribir('||*********************************************************||');
+escribir('||  Nombre: ', clienteAcompanado.nombre);
 
+escribir('||  Apellido: ', clienteAcompanado.apellido);
 
-escribir('|| FACTURA ||');
-escribir('||Nombre: ', clienteAcompanado.nombre);
+escribir('||  Cedula: ', clienteAcompanado.cedula);
 
-escribir('||Apellido: ', clienteAcompanado.apellido);
+escribir('||  E-mail: ', clienteAcompanado.email);
 
-escribir('||Cedula: ', clienteAcompanado.cedula);
+escribir('||  Telefono: ', clienteAcompanado.telefono);
 
-escribir('||E-mail: ', clienteAcompanado.email);
+escribir('||  Dias de estadia: ', cantDias);
 
-escribir('||Telefono: ', clienteAcompanado.telefono);
+escribir('||  Habitacion: ', descripcion);
 
-escribir('||Dias de estadia: ', cantDias);
-
-escribir('||Habitacion: ', descripcion);
-
-escribir('||Total cuenta: ', habitacion, '$');
-
-
+escribir('||=========================================================||');
+	escribir('||                                 TOTAL A PAGAR->  ', habitacion, '$');
+	escribi('||*********************************************************||');
 
 fin; 
 
@@ -176,25 +176,29 @@ procedimiento MostrarFacturaGrupo_Familia();
 
 inicio
 
-
-escribir('|| FACTURA ||');
-
+escribir('||*********************************************************||');
+	escribir('||                          FACTURA                        ||');
+	escribir('||*********************************************************||');
+	escribir('|| EMPRESA: Lidotel Boutique             FECHA: 00/00/0000 ||');
+	escribir('|| DIRECCION: C.C Sambil Margarita                         ||');
+	escribir('||*********************************************************||');
 escribir('||Nombre: ', clienteGrupoFamilia.nombre);
 
 escribir('||Apellido: ', clienteGrupoFamilia.apellido);
 
-escribir('||CÈdula: ', clienteGrupoFamilia.cedula);
+escribir('||C√©dula: ', clienteGrupoFamilia.cedula);
 
-escribir('||Correo electrÛnico: ', clienteGrupoFamilia.email);
+escribir('||Correo electr√≥nico: ', clienteGrupoFamilia.email);
 
-escribir('||TelÈfono: ', clienteGrupoFamilia.telefono);
+escribir('||Tel√©fono: ', clienteGrupoFamilia.telefono);
 
-escribir('||DÌas de estadÌa: ', cantDias);
+escribir('||D√≠as de estad√≠a: ', cantDias);
 
-escribir('||HabitaciÛn: ', descripcion);
+escribir('||Habitaci√≥n: ', descripcion);
 
-escribir('||Total de la cuenta: ', habitacion, '$');
-
+escribir('||=========================================================||');
+	escribir('||                                 TOTAL A PAGAR->  ', habitacion, '$');
+	escribi('||*********************************************************||');
 
 fin;
 
@@ -512,9 +516,9 @@ Procedimiento registroGrupo_Familia()
       leer adultos
 
       
-      escribir 'Si tiene hijos, indique la cantidad de niÒos que conforman el grupo'
+      escribir 'Si tiene hijos, indique la cantidad de ni√±os que conforman el grupo'
 
-      escribir 'NiÒos: '
+      escribir 'Ni√±os: '
 
       leer ninos
 
@@ -635,7 +639,7 @@ Fin procedimiento
 INICIO DEL PROGRAMA PRINCIPAL
 
 
-    // INICIALIZACI”N DE VARIABLES
+    // INICIALIZACI√ìN DE VARIABLES
 
 
     cantPersonas1 := 0
@@ -655,7 +659,7 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     Escribir('||**************************||')
 
-    Salto de lÌnea
+    Salto de l√≠nea
 
 
     Escribir('||**************************||')
@@ -672,14 +676,14 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     Escribir('||**************************||')
 
-    Escribir('|| Indique su opciÛn elegida y presione "ENTER": ')
+    Escribir('|| Indique su opci√≥n elegida y presione "ENTER": ')
 
     Leer(op)
 
 
     Mientras (op <> 1) y (op <> 2) y (op <> 3) hacer
 
-        Salto de lÌnea
+        Salto de l√≠nea
 
         Escribir('||============================================================================||')
 
@@ -687,19 +691,19 @@ INICIO DEL PROGRAMA PRINCIPAL
 
         Escribir('||============================================================================||')
 
-        Escribir('|| Indique su opciÛn elegida y presione "ENTER": ')
+        Escribir('|| Indique su opci√≥n elegida y presione "ENTER": ')
 
         Leer(op)
 
     Fin mientras
 
 
-    // OPCI”N 1: NUEVO CLIENTE
+    // OPCI√ìN 1: NUEVO CLIENTE
 
 
     Si op = 1 entonces
 
-        // SELECCI”N DEL TIPO DE RESERVACI”N
+        // SELECCI√ìN DEL TIPO DE RESERVACI√ìN
 
         Escribir('||**************************||')
 
@@ -707,26 +711,26 @@ INICIO DEL PROGRAMA PRINCIPAL
 
         Escribir('||**************************||')
 
-        Escribir('||                       (1) ReservaciÛn individual                           ||')
+        Escribir('||                       (1) Reservaci√≥n individual                           ||')
 
         Escribir('||----------------------------------------------------------------------------||')
 
-        Escribir('||                       (2) ReservaciÛn acompaÒado                           ||')
+        Escribir('||                       (2) Reservaci√≥n acompa√±ado                           ||')
 
         Escribir('||----------------------------------------------------------------------------||')
 
-        Escribir('||                       (3) ReservaciÛn Grupal/Familiar                      ||')
+        Escribir('||                       (3) Reservaci√≥n Grupal/Familiar                      ||')
 
         Escribir('||**************************||')
 
-        Escribir('|| Indique su opciÛn elegida y presione "ENTER": ')
+        Escribir('|| Indique su opci√≥n elegida y presione "ENTER": ')
 
         Leer(op)
 
 
         Mientras (op <> 1) y (op <> 2) y (op <> 3) hacer
 
-            Salto de lÌnea
+            Salto de l√≠nea
 
             Escribir('||============================================================================||')
 
@@ -734,14 +738,14 @@ INICIO DEL PROGRAMA PRINCIPAL
 
             Escribir('||============================================================================||')
 
-            Escribir('|| Indique su opciÛn elegida y presione "ENTER": ')
+            Escribir('|| Indique su opci√≥n elegida y presione "ENTER": ')
 
             Leer(op)
 
         Fin mientras
 
 
-        // RESERVACI”N INDIVIDUAL
+        // RESERVACI√ìN INDIVIDUAL
 
         Si op = 1 entonces
 
@@ -753,21 +757,21 @@ INICIO DEL PROGRAMA PRINCIPAL
 
                 Escribir('||**************************||')
 
-                Escribir('||                           ReservaciÛn Individual                           ||')
+                Escribir('||                           Reservaci√≥n Individual                           ||')
 
                 Escribir('||**************************||')
 
-                Salto de lÌnea
+                Salto de l√≠nea
 
                 registroIndividual()
 
-                Salto de lÌnea
+                Salto de l√≠nea
 
                 Escribir('||......................................................||')
 
-                Escribir('|| Por favor, indique el tiempo de su estadÌa')
+                Escribir('|| Por favor, indique el tiempo de su estad√≠a')
 
-                Escribir('|| DÌas de estadÌa: ')
+                Escribir('|| D√≠as de estad√≠a: ')
 
                 Leer(cantDias)
 
@@ -782,24 +786,24 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     Escribir('||**************************||')
 
-    Escribir('||              INDIQUE EL TIPO DE HABITACI”N QUE DESEA RESERVAR              ||')
+    Escribir('||              INDIQUE EL TIPO DE HABITACI√ìN QUE DESEA RESERVAR              ||')
 
     Escribir('||**************************||')
 
     CambiarColorTexto(VerdeClaro)
 
-    Escribir('||                      (1) HabitaciÛn sencilla: 60$ P/N                      ||')
+    Escribir('||                      (1) Habitaci√≥n sencilla: 60$ P/N                      ||')
 
     CambiarColorTexto(Blanco)
 
-    Escribir('||                      ---------- DESCRIPCI”N ----------                     ||')
-    Escribir('||  Amplia y confortable habitaciÛn decorada con un estilo vanguardista, cama ||')
+    Escribir('||                      ---------- DESCRIPCI√ìN ----------                     ||')
+    Escribir('||  Amplia y confortable habitaci√≥n decorada con un estilo vanguardista, cama ||')
 
-    Escribir('||  Lidotel Royal King con s·banas de algodÛn egipcio, soporte para iPod con  ||')
+    Escribir('||  Lidotel Royal King con s√°banas de algod√≥n egipcio, soporte para iPod con  ||')
 
-    Escribir('||  reloj despertador, TV 32in HD Plasma con cable, baÒo con ducha, cafetera  ||')
+    Escribir('||  reloj despertador, TV 32in HD Plasma con cable, ba√±o con ducha, cafetera  ||')
 
-    Escribir('||  elÈctrica, nevera ejecutiva, caja electrÛnica de seguridad y secador      ||')
+    Escribir('||  el√©ctrica, nevera ejecutiva, caja electr√≥nica de seguridad y secador      ||')
 
     Escribir('||  de cabello.                                                               ||')
 
@@ -807,19 +811,19 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     CambiarColorTexto(VerdeClaro)
 
-    Escribir('||                       (2) HabitaciÛn doble: 120$ P/N                       ||')
+    Escribir('||                       (2) Habitaci√≥n doble: 120$ P/N                       ||')
 
     CambiarColorTexto(Blanco)
 
-    Escribir('||                     ---------- DESCRIPCI”N ----------                      ||')
+    Escribir('||                     ---------- DESCRIPCI√ìN ----------                      ||')
 
-    Escribir('||  Amplia y confortable habitaciÛn decorada con un estilo vanguardista, Dos  ||')
+    Escribir('||  Amplia y confortable habitaci√≥n decorada con un estilo vanguardista, Dos  ||')
 
-    Escribir('||  Camas Lidotel Full con s·banas de algodÛn egipcio, soporte para iPod con  ||')
+    Escribir('||  Camas Lidotel Full con s√°banas de algod√≥n egipcio, soporte para iPod con  ||')
 
-    Escribir('||  reloj despertador, TV 32in HD Plasma con cable, baÒo con ducha, cafetera  ||')
+    Escribir('||  reloj despertador, TV 32in HD Plasma con cable, ba√±o con ducha, cafetera  ||')
 
-    Escribir('||  elÈctrica, nevera ejecutiva, caja electrÛnica de seguridad y secador      ||')
+    Escribir('||  el√©ctrica, nevera ejecutiva, caja electr√≥nica de seguridad y secador      ||')
 
     Escribir('||  de cabello.                                                               ||')
 
@@ -831,17 +835,17 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     CambiarColorTexto(Blanco)
 
-    Escribir('||                     ---------- DESCRIPCI”N ----------                      ||')
+    Escribir('||                     ---------- DESCRIPCI√ìN ----------                      ||')
 
-    Escribir('||  C·lida y confortable habitaciÛn decorada con un estilo vanguardista, 100% ||')
+    Escribir('||  C√°lida y confortable habitaci√≥n decorada con un estilo vanguardista, 100% ||')
 
     Escribir('||  libre de humo, cama Lidotel Royal King, con reloj despertador, TV 32in HD ||')
 
-    Escribir('||  Plasma con cable, baÒo con ducha, cafetera elÈctrica, nevera ejecutiva,   ||')
+    Escribir('||  Plasma con cable, ba√±o con ducha, cafetera el√©ctrica, nevera ejecutiva,   ||')
 
-    Escribir('||  caja electrÛnica de seguridad, secador de cabello, armario adicional      ||')
+    Escribir('||  caja electr√≥nica de seguridad, secador de cabello, armario adicional      ||')
 
-    Escribir('||  amplio, una habitaciÛn separada con 2 camas full, y baÒo con ducha.       ||')
+    Escribir('||  amplio, una habitaci√≥n separada con 2 camas full, y ba√±o con ducha.       ||')
 
     Escribir('||----------------------------------------------------------------------------||')
 
@@ -851,21 +855,21 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     CambiarColorTexto(Blanco)
 
-    Escribir('||                     ---------- DESCRIPCI”N ----------                      ||')
+    Escribir('||                     ---------- DESCRIPCI√ìN ----------                      ||')
 
-    Escribir('||  C·lida y confortable habitaciÛn decorada con un estilo vanguardista, 100% ||')
+    Escribir('||  C√°lida y confortable habitaci√≥n decorada con un estilo vanguardista, 100% ||')
 
     Escribir('||  libre de humo, cama Lidotel Royal King, con reloj despertador, TV 32in HD ||')
 
-    Escribir('||  Plasma con cable, 2 baÒos con ducha, cafetera elÈctrica, nevera ejecutiva,||')
+    Escribir('||  Plasma con cable, 2 ba√±os con ducha, cafetera el√©ctrica, nevera ejecutiva,||')
 
-    Escribir('||  caja electrÛnica de seguridad, secador de cabello, armario adicional      ||')
+    Escribir('||  caja electr√≥nica de seguridad, secador de cabello, armario adicional      ||')
 
-    Escribir('||  amplio y ·rea separada con 2 sof·-cama individuales.                      ||')
+    Escribir('||  amplio y √°rea separada con 2 sof√°-cama individuales.                      ||')
 
     Escribir('||**************************||')
 
-    Escribir('|| Indique su opciÛn a elegir y presione "ENTER": ')
+    Escribir('|| Indique su opci√≥n a elegir y presione "ENTER": ')
 
     Leer(op)
 
@@ -878,25 +882,25 @@ INICIO DEL PROGRAMA PRINCIPAL
 
         Escribir('||===========================================================================||')
 
-        Escribir('||                   POR FAVOR, SELECCIONE UNA OPCI”N V¡LIDA                  ||')
+        Escribir('||                   POR FAVOR, SELECCIONE UNA OPCI√ìN V√ÅLIDA                  ||')
 
         Escribir('||===========================================================================||')
 
         CambiarColorTexto(Blanco)
 
-        Escribir('|| Indique su opciÛn a elegir y presione "ENTER": ')
+        Escribir('|| Indique su opci√≥n a elegir y presione "ENTER": ')
 
         Leer(op)
 
     Fin Mientras
 
     
-    // INICIAMOS UN CASE PARA LA SELECCI”N DE LA HABITACI”N QUE DESEA EL USUARIO
+    // INICIAMOS UN CASE PARA LA SELECCI√ìN DE LA HABITACI√ìN QUE DESEA EL USUARIO
 
     
-    Seg˙n op hacer
+    Seg√∫n op hacer
 
-        1: // HabitaciÛn sencilla
+        1: // Habitaci√≥n sencilla
 
             LimpiarPantalla
 
@@ -909,32 +913,32 @@ INICIO DEL PROGRAMA PRINCIPAL
 
             Escribir('||**************************||')
 
-            Escribir('||                 USTED HA SELECCIONADO LA HABITACI”N SENCILLA               ||')
+            Escribir('||                 USTED HA SELECCIONADO LA HABITACI√ìN SENCILLA               ||')
 
             Escribir('||**************************||')
 
             CambiarColorTexto(Blanco)
 
-            Escribir('||                 ---------- SU RESERVACI”N INCLUYE ----------               ||')
+            Escribir('||                 ---------- SU RESERVACI√ìN INCLUYE ----------               ||')
 
-            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal·mbrico a Internet   ||')
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal√°mbrico a Internet   ||')
 
             Escribir('||  (WIFI), acceso a las instalaciones del Business Center, uso de nuestra    ||')
 
             Escribir('||  exclusiva piscina, acceso a nuestro moderno gimnasio y Kit de vanidades.  ||')
 
-            Escribir('||  NiÒos de 0-2 aÒos sin recargos.                                           ||')
+            Escribir('||  Ni√±os de 0-2 a√±os sin recargos.                                           ||')
 
             Escribir('||----------------------------------------------------------------------------||')
 
-            Escribir('||  Si desea realizar la reserva, presione el n˙mero 1 y luego ENTER.         ||')
+            Escribir('||  Si desea realizar la reserva, presione el n√∫mero 1 y luego ENTER.         ||')
 
-            Escribir('|| N˙mero: ')
+            Escribir('|| N√∫mero: ')
 
             Leer(resp)
 
             
-        2: // HabitaciÛn doble
+        2: // Habitaci√≥n doble
 
             LimpiarPantalla
 
@@ -947,27 +951,27 @@ INICIO DEL PROGRAMA PRINCIPAL
 
             Escribir('||**************************||')
 
-            Escribir('||                USTED HA SELECCIONADO LA HABITACI”N DOBLE                   ||')
+            Escribir('||                USTED HA SELECCIONADO LA HABITACI√ìN DOBLE                   ||')
 
             Escribir('||**************************||')
 
             CambiarColorTexto(Blanco)
 
-            Escribir('||                 ---------- SU RESERVACI”N INCLUYE ----------               ||')
+            Escribir('||                 ---------- SU RESERVACI√ìN INCLUYE ----------               ||')
 
-            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal·mbrico a Internet   ||')
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal√°mbrico a Internet   ||')
 
             Escribir('||  (WIFI), acceso a las instalaciones del Business Center, uso de nuestra    ||')
 
             Escribir('||  exclusiva piscina, acceso a nuestro moderno gimnasio y Kit de vanidades.  ||')
 
-            Escribir('||  NiÒos de 0 a 2 aÒos sin recargos.                                         ||')
+            Escribir('||  Ni√±os de 0 a 2 a√±os sin recargos.                                         ||')
 
             Escribir('||----------------------------------------------------------------------------||')
 
-            Escribir('||  Si desea realizar la reserva, presione el n˙mero 1 y luego ENTER.         ||')
+            Escribir('||  Si desea realizar la reserva, presione el n√∫mero 1 y luego ENTER.         ||')
 
-            Escribir('|| N˙mero: ')
+            Escribir('|| N√∫mero: ')
 
             Leer(resp)
 		3: // Family Room
@@ -989,21 +993,21 @@ INICIO DEL PROGRAMA PRINCIPAL
 
             CambiarColorTexto(Blanco)
 
-            Escribir('||                 ---------- SU RESERVACI”N INCLUYE ----------               ||')
+            Escribir('||                 ---------- SU RESERVACI√ìN INCLUYE ----------               ||')
 
-            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal·mbrico a Internet   ||')
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal√°mbrico a Internet   ||')
 
             Escribir('||  (WIFI), acceso a Business Center, uso de nuestra exclusiva piscina, acceso||')
 
             Escribir('||  a nuestro moderno gimnasio, sillas y toldos en la playa y Kit de vanidades||')
 
-            Escribir('||  NiÒos de 0 a 2 aÒos sin recargos.                                         ||')
+            Escribir('||  Ni√±os de 0 a 2 a√±os sin recargos.                                         ||')
 
             Escribir('||----------------------------------------------------------------------------||')
 
-            Escribir('||  Si desea realizar la reserva, presione el n˙mero 1 y luego ENTER.         ||')
+            Escribir('||  Si desea realizar la reserva, presione el n√∫mero 1 y luego ENTER.         ||')
 
-            Escribir('|| N˙mero: ')
+            Escribir('|| N√∫mero: ')
 
             Leer(resp)
 
@@ -1027,25 +1031,25 @@ INICIO DEL PROGRAMA PRINCIPAL
 
             CambiarColorTexto(Blanco)
 
-            Escribir('||                 ---------- SU RESERVACI”N INCLUYE ----------               ||')
+            Escribir('||                 ---------- SU RESERVACI√ìN INCLUYE ----------               ||')
 
-            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal·mbrico a Internet   ||')
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal√°mbrico a Internet   ||')
 
             Escribir('||  (WIFI), acceso a Business Center, uso de nuestra exclusiva piscina, acceso||')
 
             Escribir('||  a nuestro moderno gimnasio, sillas y toldos en la playa y Kit de vanidades||')
 
-            Escribir('||  NiÒos de 0 a 2 aÒos sin recargos.                                         ||')
+            Escribir('||  Ni√±os de 0 a 2 a√±os sin recargos.                                         ||')
 
             Escribir('||----------------------------------------------------------------------------||')
 
-            Escribir('||  Si desea realizar la reserva, presione el n˙mero 1 y luego ENTER.         ||')
+            Escribir('||  Si desea realizar la reserva, presione el n√∫mero 1 y luego ENTER.         ||')
 
-            Escribir('|| N˙mero: ')
+            Escribir('|| N√∫mero: ')
 
             Leer(resp)
 
-    Fin Seg˙n
+    Fin Seg√∫n
 
     
     Escribir('')
@@ -1080,13 +1084,13 @@ INICIO DEL PROGRAMA PRINCIPAL
 
         Escribir('||           (2) Apellido             ||')
 
-        Escribir('||           (3) CÈdula               ||')
+        Escribir('||           (3) C√©dula               ||')
 
         Escribir('||           (4) E-mail               ||')
 
-        Escribir('||           (5) TelÈfono             ||')
+        Escribir('||           (5) Tel√©fono             ||')
 
-        Escribir('||           (6) DÌas de su estadia   ||')
+        Escribir('||           (6) D√≠as de su estadia   ||')
 
         Escribir('||------------------------------------||')
 
@@ -1099,13 +1103,13 @@ INICIO DEL PROGRAMA PRINCIPAL
 
             Escribir('||===========================================================================||')
 
-            Escribir('||                   POR FAVOR, SELECCIONE UNA OPCI”N V¡LIDA                  ||')
+            Escribir('||                   POR FAVOR, SELECCIONE UNA OPCI√ìN V√ÅLIDA                  ||')
 
             Escribir('||===========================================================================||')
 
             CambiarColorTexto(Blanco)
 
-            Escribir('|| Indique su opciÛn a elegir y presione "ENTER": ')
+            Escribir('|| Indique su opci√≥n a elegir y presione "ENTER": ')
 
             Leer(op)
 
@@ -1117,7 +1121,7 @@ INICIO DEL PROGRAMA PRINCIPAL
     // CASE PARA EDITAR DATOS DEL REGISTRO
 
     
-    Seg˙n op hacer
+    Seg√∫n op hacer
 
         1: 
             Escribir('||............................................................................||')
@@ -1138,7 +1142,7 @@ INICIO DEL PROGRAMA PRINCIPAL
         3:
             Escribir('||............................................................................||')
 
-            Escribir('|| N˙mero de cÈdula: ')
+            Escribir('|| N√∫mero de c√©dula: ')
 
             Leer(clienteIndividual.cedula)
 
@@ -1154,7 +1158,7 @@ INICIO DEL PROGRAMA PRINCIPAL
         5: 
             Escribir('||............................................................................||')
 
-            Escribir('|| N˙mero de telÈfono: ')
+            Escribir('|| N√∫mero de tel√©fono: ')
 
             Leer(clienteIndividual.telefono)
 
@@ -1162,11 +1166,11 @@ INICIO DEL PROGRAMA PRINCIPAL
         6: 
             Escribir('||............................................................................||')
 
-            Escribir('|| DÌas de estadia: ')
+            Escribir('|| D√≠as de estadia: ')
 
             Leer(cantDias)
 
-    Fin Seg˙n
+    Fin Seg√∫n
 	CambiarColorTexto(RojoClaro)
 
     Escribir('|| PRESIONE ENTER PARA CONTINUAR SU PROCESO DE PAGO ||')
@@ -1183,7 +1187,7 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     Escribir('||**************************||')
 
-    Escribir('|| Ingrese su dinero para finiquitar su reservaciÛn: ')
+    Escribir('|| Ingrese su dinero para finiquitar su reservaci√≥n: ')
 
     Leer(pago)
 
@@ -1194,7 +1198,7 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     Escribir('||**************************||')
 
-    Escribir('||---------------------| SU RESERVACI”N HA SIDO EXITOSA |---------------------||')
+    Escribir('||---------------------| SU RESERVACI√ìN HA SIDO EXITOSA |---------------------||')
 
     Escribir('||**************************||')
 
@@ -1211,11 +1215,11 @@ INICIO DEL PROGRAMA PRINCIPAL
     
     Si habitacion = 60 entonces
 
-        descripcion := 'HABITACI”N SENCILLA'
+        descripcion := 'HABITACI√ìN SENCILLA'
 
     Sino Si habitacion = 120 entonces
 
-        descripcion := 'HABITACI”N DOBLE'
+        descripcion := 'HABITACI√ìN DOBLE'
 
     Sino Si habitacion = 200 entonces
 
@@ -1231,19 +1235,19 @@ INICIO DEL PROGRAMA PRINCIPAL
     
     Si habitacion = 60 entonces
 
-        clienteIndividual.nombre := clienteIndividual.nombre + 'habitaciÛn: HABITACI”N SENCILLA'
+        clienteIndividual.nombre := clienteIndividual.nombre + 'habitaci√≥n: HABITACI√ìN SENCILLA'
 
     Sino Si habitacion = 120 entonces
 
-        clienteIndividual.nombre := clienteIndividual.nombre + 'habitaciÛn: HABITACI”N DOBLE'
+        clienteIndividual.nombre := clienteIndividual.nombre + 'habitaci√≥n: HABITACI√ìN DOBLE'
 
     Sino Si habitacion = 200 entonces
 
-        clienteIndividual.nombre := clienteIndividual.nombre + 'habitaciÛn: FAMILY ROOM'
+        clienteIndividual.nombre := clienteIndividual.nombre + 'habitaci√≥n: FAMILY ROOM'
 
     Sino Si habitacion = 300 entonces
 
-        clienteIndividual.nombre := clienteIndividual.nombre + 'habitaciÛn: SUITE'
+        clienteIndividual.nombre := clienteIndividual.nombre + 'habitaci√≥n: SUITE'
 
     
     Escribir('')
@@ -1252,7 +1256,7 @@ INICIO DEL PROGRAMA PRINCIPAL
 
     CambiarColorTexto(RojoClaro)
 
-    Escribir('||PRESIONE ENTER PARA VOLVER AL MEN⁄ DE INICIO||')
+    Escribir('||PRESIONE ENTER PARA VOLVER AL MEN√ö DE INICIO||')
 
     LeerTecla()
 
@@ -1274,7 +1278,7 @@ CambiarColorTexto(Amarillo)
 
 Escribir('||||')
 
-Escribir('|| ReservaciÛn AcompaÒado ||')
+Escribir('|| Reservaci√≥n Acompa√±ado ||')
 
 Escribir('||||')
 
@@ -1288,13 +1292,13 @@ CambiarColorTexto(Blanco)
 
         Escribir('||......................................................||')
 
-        Escribir('|| Por favor, indique el tiempo de su estadÌa')
+        Escribir('|| Por favor, indique el tiempo de su estad√≠a')
 
-        Escribir('|| DÌas de estadÌa: ')
+        Escribir('|| D√≠as de estad√≠a: ')
 
         Leer(cantDias)
 
-    end; {fin para mostrar mensaje "reservacion acompaÒado"}
+    end; {fin para mostrar mensaje "reservacion acompa√±ado"}
 
     
     begin {inicio para mostrar el tipo de habitaciones}
@@ -1307,25 +1311,25 @@ CambiarColorTexto(Blanco)
 
         Escribir('||**************************||')
 
-        Escribir('||              INDIQUE EL TIPO DE HABITACI”N QUE DESEA RESERVAR              ||')
+        Escribir('||              INDIQUE EL TIPO DE HABITACI√ìN QUE DESEA RESERVAR              ||')
 
         Escribir('||**************************||')
 
         CambiarColorTexto(VerdeClaro)
 
-        Escribir('||                      (1) HabitaciÛn sencilla: 60$ P/N                      ||')
+        Escribir('||                      (1) Habitaci√≥n sencilla: 60$ P/N                      ||')
 
         CambiarColorTexto(Blanco)
 
-        Escribir('||                      ---------- DESCRIPCI”N ----------                     ||')
+        Escribir('||                      ---------- DESCRIPCI√ìN ----------                     ||')
 
-        Escribir('||  Amplia y confortable habitaciÛn decorada con un estilo vanguardista, cama ||')
+        Escribir('||  Amplia y confortable habitaci√≥n decorada con un estilo vanguardista, cama ||')
 
-        Escribir('||  Lidotel Royal King con s·banas de algodÛn egipcio, soporte para iPod con  ||')
+        Escribir('||  Lidotel Royal King con s√°banas de algod√≥n egipcio, soporte para iPod con  ||')
 
-        Escribir('||  reloj despertador, TV 32in HD Plasma con cable, baÒo con ducha, cafetera  ||')
+        Escribir('||  reloj despertador, TV 32in HD Plasma con cable, ba√±o con ducha, cafetera  ||')
 
-        Escribir('||  elÈctrica, nevera ejecutiva, caja electrÛnica de seguridad y secador      ||')
+        Escribir('||  el√©ctrica, nevera ejecutiva, caja electr√≥nica de seguridad y secador      ||')
 
         Escribir('||  de cabello.                                                               ||')
 
@@ -1333,19 +1337,19 @@ CambiarColorTexto(Blanco)
 
         CambiarColorTexto(VerdeClaro)
 
-        Escribir('||                       (2) HabitaciÛn doble: 120$ P/N                       ||')
+        Escribir('||                       (2) Habitaci√≥n doble: 120$ P/N                       ||')
 
         CambiarColorTexto(Blanco)
 
-        Escribir('||                     ---------- DESCRIPCI”N ----------                      ||')
+        Escribir('||                     ---------- DESCRIPCI√ìN ----------                      ||')
 
-        Escribir('||  Amplia y confortable habitaciÛn decorada con un estilo vanguardista, Dos  ||')
+        Escribir('||  Amplia y confortable habitaci√≥n decorada con un estilo vanguardista, Dos  ||')
 
-        Escribir('||  Camas Lidotel Full con s·banas de algodÛn egipcio, soporte para iPod con  ||')
+        Escribir('||  Camas Lidotel Full con s√°banas de algod√≥n egipcio, soporte para iPod con  ||')
 
-        Escribir('||  reloj despertador, TV 32in HD Plasma con cable, baÒo con ducha, cafetera  ||')
+        Escribir('||  reloj despertador, TV 32in HD Plasma con cable, ba√±o con ducha, cafetera  ||')
 
-        Escribir('||  elÈctrica, nevera ejecutiva, caja electrÛnica de seguridad y secador      ||')
+        Escribir('||  el√©ctrica, nevera ejecutiva, caja electr√≥nica de seguridad y secador      ||')
 
         Escribir('||  de cabello.                                                               ||')
 
@@ -1357,17 +1361,17 @@ CambiarColorTexto(Blanco)
 
         CambiarColorTexto(Blanco)
 
-        Escribir('||                     ---------- DESCRIPCI”N ----------                      ||')
+        Escribir('||                     ---------- DESCRIPCI√ìN ----------                      ||')
 
-        Escribir('||  C·lida y confortable habitaciÛn decorada con un estilo vanguardista, 100% ||')
+        Escribir('||  C√°lida y confortable habitaci√≥n decorada con un estilo vanguardista, 100% ||')
 
         Escribir('||  libre de humo, cama Lidotel Royal King, con reloj despertador, TV 32in HD ||')
 
-        Escribir('||  Plasma con cable, baÒo con ducha, cafetera elÈctrica, nevera ejecutiva,   ||')
+        Escribir('||  Plasma con cable, ba√±o con ducha, cafetera el√©ctrica, nevera ejecutiva,   ||')
 
-        Escribir('||  caja electrÛnica de seguridad, secador de cabello, armario adicional      ||')
+        Escribir('||  caja electr√≥nica de seguridad, secador de cabello, armario adicional      ||')
 
-        Escribir('||  amplio, una habitaciÛn separada con 2 camas full, y baÒo con ducha.       ||')
+        Escribir('||  amplio, una habitaci√≥n separada con 2 camas full, y ba√±o con ducha.       ||')
 
         Escribir('||----------------------------------------------------------------------------||')
 
@@ -1377,21 +1381,21 @@ CambiarColorTexto(Blanco)
 
         CambiarColorTexto(Blanco)
 
-        Escribir('||                     ---------- DESCRIPCI”N ----------                      ||')
+        Escribir('||                     ---------- DESCRIPCI√ìN ----------                      ||')
 
-        Escribir('||  C·lida y confortable habitaciÛn decorada con un estilo vanguardista, 100% ||')
+        Escribir('||  C√°lida y confortable habitaci√≥n decorada con un estilo vanguardista, 100% ||')
 
         Escribir('||  libre de humo, cama Lidotel Royal King, con reloj despertador, TV 32in HD ||')
 
-        Escribir('||  Plasma con cable, 2 baÒos con ducha, cafetera elÈctrica, nevera ejecutiva,||')
+        Escribir('||  Plasma con cable, 2 ba√±os con ducha, cafetera el√©ctrica, nevera ejecutiva,||')
 
-        Escribir('||  caja electrÛnica de seguridad, secador de cabello, armario adicional      ||')
+        Escribir('||  caja electr√≥nica de seguridad, secador de cabello, armario adicional      ||')
 
-        Escribir('||  amplio y ·rea separada con 2 sof·-cama individuales.                      ||')
+        Escribir('||  amplio y √°rea separada con 2 sof√°-cama individuales.                      ||')
 
         Escribir('||**************************||')
 
-        Escribir('|| Indique su opciÛn a elegir y presione "ENTER": ')
+        Escribir('|| Indique su opci√≥n a elegir y presione "ENTER": ')
 
         Leer(op)
 
@@ -1402,13 +1406,13 @@ CambiarColorTexto(Blanco)
 
             Escribir('||===========================================================================||')
 
-            Escribir('||                   POR FAVOR, SELECCIONE UNA OPCI”N V¡LIDA                  ||')
+            Escribir('||                   POR FAVOR, SELECCIONE UNA OPCI√ìN V√ÅLIDA                  ||')
 
             Escribir('||===========================================================================||')
 
             CambiarColorTexto(Blanco)
 
-            Escribir('|| Indique su opciÛn a elegir y presione "ENTER": ')
+            Escribir('|| Indique su opci√≥n a elegir y presione "ENTER": ')
 
             Leer(op)
 
@@ -1417,12 +1421,12 @@ CambiarColorTexto(Blanco)
     end; {fin para mostrar el tipo de habitaciones}
 
     
-    // INICIAMOS UN CASE PARA LA SELECCI”N DE LA HABITACI”N QUE DESEA EL USUARIO
+    // INICIAMOS UN CASE PARA LA SELECCI√ìN DE LA HABITACI√ìN QUE DESEA EL USUARIO
 
     
-    Seg˙n op hacer
+    Seg√∫n op hacer
 
-        1: // HabitaciÛn Sencilla
+        1: // Habitaci√≥n Sencilla
 
             LimpiarPantalla
 
@@ -1434,31 +1438,31 @@ CambiarColorTexto(Blanco)
 
             Escribir('||**************************||')
 
-            Escribir('||                 USTED HA SELECCIONADO LA HABITACI”N SENCILLA               ||')
+            Escribir('||                 USTED HA SELECCIONADO LA HABITACI√ìN SENCILLA               ||')
 
             Escribir('||**************************||')
 
             CambiarColorTexto(Blanco)
 
-            Escribir('||                 ---------- SU RESERVACI”N INCLUYE ----------               ||')
+            Escribir('||                 ---------- SU RESERVACI√ìN INCLUYE ----------               ||')
 
-            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal·mbrico a Internet   ||')
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal√°mbrico a Internet   ||')
 
             Escribir('||  (WIFI), acceso a las instalaciones del Business Center, uso de nuestra    ||')
 
             Escribir('||  exclusiva piscina, acceso a nuestro moderno gimnasio y Kit de vanidades.  ||')
 
-            Escribir('||  NiÒos de 0-2 aÒos sin recargos.                                           ||')
+            Escribir('||  Ni√±os de 0-2 a√±os sin recargos.                                           ||')
 
             Escribir('||----------------------------------------------------------------------------||')
 
-            Escribir('||  Si desea realizar la reservaciÛn, presione el n˙mero 1 y luego ENTER.     ||')
+            Escribir('||  Si desea realizar la reservaci√≥n, presione el n√∫mero 1 y luego ENTER.     ||')
 
-            Escribir('|| N˙mero: ')
+            Escribir('|| N√∫mero: ')
 
             Leer(resp)
 
-        2: // HabitaciÛn Doble
+        2: // Habitaci√≥n Doble
 
             LimpiarPantalla
 
@@ -1471,27 +1475,27 @@ CambiarColorTexto(Blanco)
 
             Escribir('||**************************||')
 
-            Escribir('||                  USTED HA SELECCIONADO LA HABITACI”N DOBLE                 ||')
+            Escribir('||                  USTED HA SELECCIONADO LA HABITACI√ìN DOBLE                 ||')
 
             Escribir('||**************************||')
 
             CambiarColorTexto(Blanco)
 
-            Escribir('||                 ---------- SU RESERVACI”N INCLUYE ----------               ||')
+            Escribir('||                 ---------- SU RESERVACI√ìN INCLUYE ----------               ||')
 
-            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal·mbrico a Internet   ||')
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal√°mbrico a Internet   ||')
 
             Escribir('||  (WIFI), acceso a las instalaciones del Business Center, uso de nuestra    ||')
 
             Escribir('||  exclusiva piscina, acceso a nuestro moderno gimnasio y Kit de vanidades.  ||')
 
-            Escribir('||  NiÒos de 0 a 2 aÒos sin recargos.                                         ||')
+            Escribir('||  Ni√±os de 0 a 2 a√±os sin recargos.                                         ||')
 
             Escribir('||----------------------------------------------------------------------------||')
  
-            Escribir('||  Si desea realizar la reservaciÛn, presione el n˙mero 1 y luego ENTER.     ||')
+            Escribir('||  Si desea realizar la reservaci√≥n, presione el n√∫mero 1 y luego ENTER.     ||')
   
-            Escribir('|| N˙mero: ')
+            Escribir('|| N√∫mero: ')
 
             Leer(resp)
 
@@ -1514,21 +1518,21 @@ CambiarColorTexto(Blanco)
 
             CambiarColorTexto(Blanco)
 
-            Escribir('||                 ---------- SU RESERVACI”N INCLUYE ----------               ||')
+            Escribir('||                 ---------- SU RESERVACI√ìN INCLUYE ----------               ||')
 
-            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal·mbrico a Internet   ||')
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal√°mbrico a Internet   ||')
 
             Escribir('||  (WIFI), acceso a Business Center, uso de nuestra exclusiva piscina, acceso||')
 
             Escribir('||  a nuestro moderno gimnasio, sillas y toldos en la playa y Kit de vanidades||')
 
-            Escribir('||  NiÒos de 0 a 2 aÒos sin recargos.                                         ||')
+            Escribir('||  Ni√±os de 0 a 2 a√±os sin recargos.                                         ||')
 
             Escribir('||----------------------------------------------------------------------------||')
 
-            Escribir('||  Si desea realizar la reservaciÛn, presione el n˙mero 1 y luego ENTER.     ||')
+            Escribir('||  Si desea realizar la reservaci√≥n, presione el n√∫mero 1 y luego ENTER.     ||')
 
-            Escribir('|| N˙mero: ')
+            Escribir('|| N√∫mero: ')
 
             Leer(resp)
 
@@ -1551,25 +1555,25 @@ CambiarColorTexto(Blanco)
 
             CambiarColorTexto(Blanco)
 
-            Escribir('||                 ---------- SU RESERVACI”N INCLUYE ----------               ||')
+            Escribir('||                 ---------- SU RESERVACI√ìN INCLUYE ----------               ||')
 
-            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal·mbrico a Internet   ||')
+            Escribir('||  Desayuno Buffet en Restaurante Le Nouveau, acceso inal√°mbrico a Internet   ||')
 
             Escribir('||  (WIFI), acceso a Business Center, uso de nuestra exclusiva piscina, acceso||')
 
             Escribir('||  a nuestro moderno gimnasio, sillas y toldos en la playa y Kit de vanidades||')
 
-            Escribir('||  NiÒos de 0 a 2 aÒos sin recargos.                                         ||')
+            Escribir('||  Ni√±os de 0 a 2 a√±os sin recargos.                                         ||')
 
             Escribir('||----------------------------------------------------------------------------||')
 
-            Escribir('||  Si desea realizar la reservaciÛn, presione el n˙mero 1 y luego ENTER.     ||')
+            Escribir('||  Si desea realizar la reservaci√≥n, presione el n√∫mero 1 y luego ENTER.     ||')
 
-            Escribir('|| N˙mero: ')
+            Escribir('|| N√∫mero: ')
 
             Leer(resp)
 
-    Fin Seg˙n
+    Fin Seg√∫n
 
     
     Escribir('')
@@ -1595,7 +1599,7 @@ CambiarColorTexto(Blanco)
 
         Escribir('||**************||')
 
-        Escribir('||         DATOS DE SU RESERVACI”N        ||')
+        Escribir('||         DATOS DE SU RESERVACI√ìN        ||')
 
         Escribir('||**************||')
 
@@ -1607,24 +1611,24 @@ CambiarColorTexto(Blanco)
 
         Escribir('||========================================||')
 
-        Escribir('|| CÈdula: ', clienteAcompanado.cedula)
+        Escribir('|| C√©dula: ', clienteAcompanado.cedula)
 
         Escribir('||========================================||')
 
-        Escribir('|| TelÈfono: ', clienteAcompanado.telefono)
+        Escribir('|| Tel√©fono: ', clienteAcompanado.telefono)
 
         Escribir('||========================================||')
         Escribir('|| E-mail: ', clienteAcompanado.email)
 
         Escribir('||========================================||')
 
-        Escribir('|| Sus dÌas de estadÌa son: ', cantDias)
+        Escribir('|| Sus d√≠as de estad√≠a son: ', cantDias)
 
         CambiarColorTexto(VerdeClaro)
 
         Escribir('||========================================||')
 
-        Escribir('|| LA TOTALIDAD DE SU CUENTA SERÕA DE: ', habitacion, '$')
+        Escribir('|| LA TOTALIDAD DE SU CUENTA SER√çA DE: ', habitacion, '$')
 
         Escribir('||**************||')
 
@@ -1642,7 +1646,7 @@ CambiarColorTexto(Blanco)
         
         CambiarColorTexto(RojoClaro)
 
-        Escribir('|| øDesea editar alg˙n dato de su Registro? (SÌ/no): ')
+        Escribir('|| ¬øDesea editar alg√∫n dato de su Registro? (S√≠/no): ')
 
         Leer(resp)
 
@@ -1670,15 +1674,15 @@ CambiarColorTexto(Blanco)
 
             Escribir('||           (2) Apellido             ||')
 
-            Escribir('||           (3) CÈdula               ||')
+            Escribir('||           (3) C√©dula               ||')
 
             Escribir('||           (4) E-mail               ||')
 
-            Escribir('||           (5) TelÈfono             ||')
+            Escribir('||           (5) Tel√©fono             ||')
 
             Escribir('||           (6) Edad                 ||')
 
-            Escribir('||           (7) DÌas de su estadÌa   ||')
+            Escribir('||           (7) D√≠as de su estad√≠a   ||')
 
             Escribir('||------------------------------------||')
 
@@ -1691,13 +1695,13 @@ CambiarColorTexto(Blanco)
 
                 Escribir('||===========================================================================||')
 
-                Escribir('||                   POR FAVOR, SELECCIONE UNA OPCI”N V¡LIDA                  ||')
+                Escribir('||                   POR FAVOR, SELECCIONE UNA OPCI√ìN V√ÅLIDA                  ||')
 
                 Escribir('||===========================================================================||')
 
                 CambiarColorTexto(Blanco)
 
-                Escribir('|| Indique su opciÛn a elegir y presione "ENTER": ')
+                Escribir('|| Indique su opci√≥n a elegir y presione "ENTER": ')
 
                 Leer(op)
 
@@ -1709,7 +1713,7 @@ CambiarColorTexto(Blanco)
 
 Fin
 
-seg˙n op hacer
+seg√∫n op hacer
 
     caso 1:
  
@@ -1738,7 +1742,7 @@ seg˙n op hacer
 
 	caso 3:  
 	inicio
-        	escribir '|| N˙mero de cÈdula: '
+        	escribir '|| N√∫mero de c√©dula: '
         	leer clienteAcompanado.cedula
 
    	 fin del caso
@@ -1762,7 +1766,7 @@ seg˙n op hacer
 	inicio       
 		escribir '||............................................................................||'
 
-        	escribir '|| N˙mero de telÈfono: '
+        	escribir '|| N√∫mero de tel√©fono: '
 
     	    	leer clienteAcompanado.telefono
 
@@ -1788,13 +1792,13 @@ seg˙n op hacer
 	inicio       
 		escribir '||............................................................................||'
 
-        	escribir '|| DÌas de estadÌa: '
+        	escribir '|| D√≠as de estad√≠a: '
 
         	leer cantDias
 
    	 fin del caso
 
-fin del seg˙n
+fin del seg√∫n
 escribir '|| PRESIONE ENTER PARA CONTINUAR SU PROCESO DE PAGO ||'
 
 leer()
@@ -1809,7 +1813,7 @@ limpiarPantalla()
 
 escribir('||**************************||')
 
-escribir('|| Ingrese su dinero para finiquitar su reservaciÛn: ')
+escribir('|| Ingrese su dinero para finiquitar su reservaci√≥n: ')
 
 leer pago
 procesoCobro()
@@ -1820,7 +1824,7 @@ escribir('')
 
 escribir('||**************************||')
 
-escribir('||---------------------| SU RESERVACI”N HA SIDO EXITOSA |---------------------||'
+escribir('||---------------------| SU RESERVACI√ìN HA SIDO EXITOSA |---------------------||'
 
 escribir('||**************************||')
 
@@ -1841,12 +1845,12 @@ limpiarPantalla()
 
 si habitacion = 60 entonces
 
-    descripcion := 'HABITACI”N SENCILLA'
+    descripcion := 'HABITACI√ìN SENCILLA'
 
 	
 si habitacion = 120 entonces
 
-    descripcion := 'HABITACI”N DOBLE'
+    descripcion := 'HABITACI√ìN DOBLE'
 		
 si habitacion = 200 entonces
 
@@ -1863,22 +1867,22 @@ MostrarFacturaAcompanado()
 
 si habitacion = 60 entonces
 
-    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitaciÛn: HABITACI”N SENCILLA'
+    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitaci√≥n: HABITACI√ìN SENCILLA'
 
 	
 si habitacion = 120 entonces
 
-    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitaciÛn: HABITACI”N DOBLE'
+    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitaci√≥n: HABITACI√ìN DOBLE'
 
 	
 si habitacion = 200 entonces
 
-    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitaciÛn: FAMILY ROOM'
+    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitaci√≥n: FAMILY ROOM'
 
 	
 si habitacion = 300 entonces
 
-    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitaciÛn: SUITE'
+    clienteAcompanado.nombre := clienteAcompanado.nombre + 'habitaci√≥n: SUITE'
 
 
 
@@ -1886,7 +1890,7 @@ escribir('')
 
 escribir('')
 
-escribir('PRESIONE ENTER PARA VOLVER AL MEN⁄ DE INICIO')
+escribir('PRESIONE ENTER PARA VOLVER AL MEN√ö DE INICIO')
 
 leerTecla()
 
@@ -1895,13 +1899,13 @@ si opcion = 3 entonces  {INICIO OPCION 3 - RESERVACION GRUPO/FAMILIA}
 
     si cantPersonas3 < 2000 entonces
 
-        inicio {mostrar mensaje "reservacion grupo/familia" y preguntar la cantidad de niÒos y adultos}
+        inicio {mostrar mensaje "reservacion grupo/familia" y preguntar la cantidad de ni√±os y adultos}
 
             limpiarPantalla()
 
             escribir('||**************************||')
 
-            escribir('||               ReservaciÛn Grupo/Familia - Indique la cantidad               ||')
+            escribir('||               Reservaci√≥n Grupo/Familia - Indique la cantidad               ||')
 
             escribir('||**************************||')
 
@@ -1915,9 +1919,9 @@ si opcion = 3 entonces  {INICIO OPCION 3 - RESERVACION GRUPO/FAMILIA}
 
             escribir('||......................................................||')
 
-            escribir('|| Por favor, indique el tiempo de su estadÌa.')
+            escribir('|| Por favor, indique el tiempo de su estad√≠a.')
 
-            escribir('|| DÌas de estadÌa: ')
+            escribir('|| D√≠as de estad√≠a: ')
 
             leer cantDias
 
@@ -1930,7 +1934,7 @@ si opcion = 3 entonces  {INICIO OPCION 3 - RESERVACION GRUPO/FAMILIA}
 
             leerTecla()
 
-        fin {fin del mensaje "reservacion grupo/familia" y preguntar la cantidad de niÒos y adultos}
+        fin {fin del mensaje "reservacion grupo/familia" y preguntar la cantidad de ni√±os y adultos}
 
         
         inicio {mostrar el tipo de habitaciones}
@@ -1941,39 +1945,39 @@ si opcion = 3 entonces  {INICIO OPCION 3 - RESERVACION GRUPO/FAMILIA}
  
             escribir('||**************************||')
 
-            escribir('||              INDIQUE EL TIPO DE HABITACI”N QUE DESEA RESERVAR              ||')
+            escribir('||              INDIQUE EL TIPO DE HABITACI√ìN QUE DESEA RESERVAR              ||')
 
             escribir('||**************************||')
 
             escribir('')
 
-            escribir('||                      (1) HabitaciÛn sencilla: 60$ P/N                      ||')
+            escribir('||                      (1) Habitaci√≥n sencilla: 60$ P/N                      ||')
 
-            escribir('||                      ---------- DESCRIPCI”N ----------                     ||')
+            escribir('||                      ---------- DESCRIPCI√ìN ----------                     ||')
 
-            escribir('||  Amplia y confortable habitaciÛn decorada con un estilo vanguardista, cama ||')
+            escribir('||  Amplia y confortable habitaci√≥n decorada con un estilo vanguardista, cama ||')
 
-            escribir('||  Lidotel Royal King con s·banas de algodÛn egipcio, soporte para iPod con  ||')
+            escribir('||  Lidotel Royal King con s√°banas de algod√≥n egipcio, soporte para iPod con  ||')
 
-            escribir('||  reloj despertador, TV 32in HD Plasma con cable, baÒo con ducha, cafetera  ||')
+            escribir('||  reloj despertador, TV 32in HD Plasma con cable, ba√±o con ducha, cafetera  ||')
 
-            escribir('||  elÈctrica, nevera ejecutiva, caja electrÛnica de seguridad y secador      ||')
+            escribir('||  el√©ctrica, nevera ejecutiva, caja electr√≥nica de seguridad y secador      ||')
 
             escribir('||  de cabello.                                                               ||')
 
             escribir('||----------------------------------------------------------------------------||')
 
-            escribir('||                       (2) HabitaciÛn doble: 120$ P/N                       ||')
+            escribir('||                       (2) Habitaci√≥n doble: 120$ P/N                       ||')
 
-            escribir('||                     ---------- DESCRIPCI”N ----------                      ||')
+            escribir('||                     ---------- DESCRIPCI√ìN ----------                      ||')
 
-            escribir('||  Amplia y confortable habitaciÛn decorada con un estilo vanguardista, Dos  ||')
+            escribir('||  Amplia y confortable habitaci√≥n decorada con un estilo vanguardista, Dos  ||')
 
-            escribir('||  Camas Lidotel Full con s·banas de algodÛn egipcio, soporte para iPod con  ||')
+            escribir('||  Camas Lidotel Full con s√°banas de algod√≥n egipcio, soporte para iPod con  ||')
 
-            escribir('||  reloj despertador, TV 32in HD Plasma con cable, baÒo con ducha, cafetera  ||')
+            escribir('||  reloj despertador, TV 32in HD Plasma con cable, ba√±o con ducha, cafetera  ||')
 
-            escribir('||  elÈctrica, nevera ejecutiva, caja electrÛnica de seguridad y secador      ||')
+            escribir('||  el√©ctrica, nevera ejecutiva, caja electr√≥nica de seguridad y secador      ||')
 
             escribir('||  de cabello.                                                               ||')
 
@@ -1981,29 +1985,29 @@ si opcion = 3 entonces  {INICIO OPCION 3 - RESERVACION GRUPO/FAMILIA}
 
             escribir('||                          (3) Family Room: 200$ P/N                         ||')
 
-            escribir('||                         ------ DESCRIPCI”N ----------                      ||')
-	    escribir('||  despertador, TV 32in HD Plasma con cable, 2 baÒos con ducha, cafetera elÈctrica,||')
+            escribir('||                         ------ DESCRIPCI√ìN ----------                      ||')
+	    escribir('||  despertador, TV 32in HD Plasma con cable, 2 ba√±os con ducha, cafetera el√©ctrica,||')
 
-            escribir('||  nevera ejecutiva, caja electrÛnica de seguridad, secador de cabello,         ||')
+            escribir('||  nevera ejecutiva, caja electr√≥nica de seguridad, secador de cabello,         ||')
 
-            escribir('||  armario adicional amplio y ·rea separada con 2 sof·-cama individuales.        ||')
+            escribir('||  armario adicional amplio y √°rea separada con 2 sof√°-cama individuales.        ||')
 
             escribir('||**************************||')
 
-            escribir('|| Indique su opciÛn a elegir y presione "ENTER": ')
+            escribir('|| Indique su opci√≥n a elegir y presione "ENTER": ')
 
             leer op
 
 Mientras (op <> 1) y (op <> 2) y (op <> 3) y (op <> 4) hacer
 
-    Escribir("Por favor, seleccione una opciÛn v·lida")
+    Escribir("Por favor, seleccione una opci√≥n v√°lida")
 
     Leer op
 
 fin mientras
 
 
-Seg˙n op hacer
+Seg√∫n op hacer
     
 1:
         
@@ -2011,11 +2015,11 @@ LimpiarPantalla()
 
         habitacion = cantDias * 60
 
-        Escribir("Ha seleccionado la HabitaciÛn Sencilla")
+        Escribir("Ha seleccionado la Habitaci√≥n Sencilla")
 
-        Escribir("Su reservaciÛn incluye:")
+        Escribir("Su reservaci√≥n incluye:")
 
-        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inal·mbrico a Internet (WIFI)")
+        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inal√°mbrico a Internet (WIFI)")
 
         Escribir("- Acceso a las instalaciones del Business Center")
 
@@ -2025,9 +2029,9 @@ LimpiarPantalla()
 
         Escribir("- Kit de vanidades")
 
-        Escribir("NiÒos de 0-2 aÒos sin recargos")
+        Escribir("Ni√±os de 0-2 a√±os sin recargos")
 
-        Escribir("Si desea realizar la reservaciÛn, presione 1 y luego ENTER")
+        Escribir("Si desea realizar la reservaci√≥n, presione 1 y luego ENTER")
 
         Leer resp
 
@@ -2038,11 +2042,11 @@ LimpiarPantalla()
 
         habitacion = cantDias * 120
 
-        Escribir("Ha seleccionado la HabitaciÛn Doble")
+        Escribir("Ha seleccionado la Habitaci√≥n Doble")
 
-        Escribir("Su reservaciÛn incluye:")
+        Escribir("Su reservaci√≥n incluye:")
 
-        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inal·mbrico a Internet (WIFI)")
+        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inal√°mbrico a Internet (WIFI)")
 
         Escribir("- Acceso a las instalaciones del Business Center")
 
@@ -2052,9 +2056,9 @@ LimpiarPantalla()
 
         Escribir("- Kit de vanidades")
 
-        Escribir("NiÒos de 0 a 2 aÒos sin recargos")
+        Escribir("Ni√±os de 0 a 2 a√±os sin recargos")
 
-        Escribir("Si desea realizar la reservaciÛn, presione 1 y luego ENTER")
+        Escribir("Si desea realizar la reservaci√≥n, presione 1 y luego ENTER")
 
         Leer resp
 
@@ -2067,9 +2071,9 @@ LimpiarPantalla()
 
         Escribir("Ha seleccionado la Family Room")
 
-        Escribir("Su reservaciÛn incluye:")
+        Escribir("Su reservaci√≥n incluye:")
 
-        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inal·mbrico a Internet (WIFI)")
+        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inal√°mbrico a Internet (WIFI)")
 
         Escribir("- Acceso al Business Center")
 
@@ -2081,9 +2085,9 @@ LimpiarPantalla()
 
         Escribir("- Kit de vanidades")
 
-        Escribir("NiÒos de 0 a 2 aÒos sin recargos")
+        Escribir("Ni√±os de 0 a 2 a√±os sin recargos")
 
-        Escribir("Si desea realizar la reservaciÛn, presione 1 y luego ENTER")
+        Escribir("Si desea realizar la reservaci√≥n, presione 1 y luego ENTER")
 
         Leer resp
 
@@ -2096,9 +2100,9 @@ LimpiarPantalla()
 
         Escribir("Ha seleccionado la Suite")
 
-        Escribir("Su reservaciÛn incluye:")
+        Escribir("Su reservaci√≥n incluye:")
 
-        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inal·mbrico a Internet (WIFI)")
+        Escribir("- Desayuno Buffet en Restaurant Le Nouveau, acceso inal√°mbrico a Internet (WIFI)")
 
         Escribir("- Acceso al Business Center")
 
@@ -2110,13 +2114,13 @@ LimpiarPantalla()
 
         Escribir("- Kit de vanidades")
 
-        Escribir("NiÒos de 0 a 2 aÒos sin recargos")
+        Escribir("Ni√±os de 0 a 2 a√±os sin recargos")
 
-        Escribir("Si desea realizar la reservaciÛn, presione 1 y luego ENTER")
+        Escribir("Si desea realizar la reservaci√≥n, presione 1 y luego ENTER")
 
         Leer resp
 
-fin seg˙n
+fin seg√∫n
 
 
 Escribir("")
@@ -2131,21 +2135,21 @@ Leer()
 editarDatos = falso
 LimpiarPantalla()
 
-Escribir("Datos de su reservaciÛn:")
+Escribir("Datos de su reservaci√≥n:")
 
 Escribir("Nombre: " + clienteGrupoFamilia.nombre)
 
 Escribir("Apellido: " + clienteGrupoFamilia.apellido)
 
-Escribir("CÈdula: " + clienteGrupoFamilia.cedula)
+Escribir("C√©dula: " + clienteGrupoFamilia.cedula)
 
-Escribir("TelÈfono: " + clienteGrupoFamilia.telefono)
+Escribir("Tel√©fono: " + clienteGrupoFamilia.telefono)
 
 Escribir("E-mail: " + clienteGrupoFamilia.email)
 
-Escribir("DÌas de estadÌa: " + cantDias)
+Escribir("D√≠as de estad√≠a: " + cantDias)
 
-Escribir("La totalidad de su cuenta serÌa de: " + habitacion + "$")
+Escribir("La totalidad de su cuenta ser√≠a de: " + habitacion + "$")
 
 
 Escribir("")
@@ -2157,7 +2161,7 @@ Escribir("Presione ENTER para continuar")
 Leer()
 
 
-Escribir("øDesea editar alg˙n dato de su registro? (Si/no): ")
+Escribir("¬øDesea editar alg√∫n dato de su registro? (Si/no): ")
 
 Leer resp
 
@@ -2180,29 +2184,29 @@ si editarDatos entonces
 
     Escribir("(2) Apellido")
 
-    Escribir("(3) CÈdula")
+    Escribir("(3) C√©dula")
 
     Escribir("(4) E-mail")
 
-    Escribir("(5) TelÈfono")
+    Escribir("(5) Tel√©fono")
 
     Escribir("(6) Edad")
 
-    Escribir("(7) DÌas de estadÌa")
+    Escribir("(7) D√≠as de estad√≠a")
 
     Leer op
 
 
     mientras (op <> 1) y (op <> 2) y (op <> 3) y (op <> 4) y (op <> 5) y (op <> 6) hacer
 
-        Escribir("Por favor, seleccione una opciÛn v·lida")
+        Escribir("Por favor, seleccione una opci√≥n v√°lida")
 
         Leer op
 
     fin mientras
 
 
-    seg˙n op hacer
+    seg√∫n op hacer
 
         1:
 
@@ -2217,7 +2221,7 @@ si editarDatos entonces
 
         3:
 
-            Escribir("N˙mero de cÈdula: ")
+            Escribir("N√∫mero de c√©dula: ")
 
             Leer clienteGrupoFamilia.cedula
 
@@ -2229,7 +2233,7 @@ si editarDatos entonces
 
         5:
 
-            Escribir("N˙mero de telÈfono: ")
+            Escribir("N√∫mero de tel√©fono: ")
 
             Leer clienteGrupoFamilia.telefono
 
@@ -2241,11 +2245,11 @@ si editarDatos entonces
 
         7:
 
-            Escribir("DÌas de estadÌa: ")
+            Escribir("D√≠as de estad√≠a: ")
 
             Leer cantDias
 
-    fin seg˙n
+    fin seg√∫n
 fin si
 
 
@@ -2260,7 +2264,7 @@ Leer()
 
 LimpiarPantalla()
 
-Escribir("Ingrese su dinero para finalizar la reservaciÛn: ")
+Escribir("Ingrese su dinero para finalizar la reservaci√≥n: ")
 
 Leer 
 pago
@@ -2270,7 +2274,7 @@ procesoCobro()
 Escribir("")
 
 Escribir("")
-Escribir("°SU RESERVACI”N HA SIDO EXITOSA!")
+Escribir("¬°SU RESERVACI√ìN HA SIDO EXITOSA!")
 
 Escribir("Presione ENTER para mostrar su factura")
 
@@ -2286,7 +2290,7 @@ Escribir("")
 
 Escribir("")
 
-Escribir("Presione ENTER para volver al men˙ de inicio")
+Escribir("Presione ENTER para volver al men√∫ de inicio")
 
 LeerTecla()
 
